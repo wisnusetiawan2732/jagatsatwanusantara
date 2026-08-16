@@ -1,308 +1,717 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jagat Satwa Nusantara - TMII</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Jagat Satwa Nusantara - Destinasi Wisata Satwa Edukatif & Konservasi Terpadu TMII Jakarta">
+  <title>Jagat Satwa Nusantara | Official Enterprise Website</title>
   
+  <!-- External Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
+    /* ==========================================
+       1. CORE DESIGN SYSTEM & VARIABLES
+       ========================================== */
+    :root {
+      --primary: #1b4332;
+      --primary-light: #2d6a4f;
+      --accent: #e9c46a;
+      --accent-hover: #f4a261;
+      --dark: #081c15;
+      --light: #f8f9fa;
+      --glass-bg: rgba(8, 28, 21, 0.65);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --transition-base: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      color: #1a2e22;
-      background: linear-gradient(-45deg, #e8f5e9, #f1f8e9, #e0f2f1, #f4fbf7);
-      background-size: 400% 400%;
-      animation: gradientMove 15s ease infinite;
-      line-height: 1.6;
-      position: relative;
+      color: #2b2b2b;
+      background-color: var(--dark);
       overflow-x: hidden;
+      line-height: 1.7;
     }
 
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    h1, h2, h3, h4, .brand-font {
+      font-family: 'Syne', sans-serif;
     }
 
-    /* Efek Daun Melayang */
-    .leaves-container {
+    /* ==========================================
+       2. BACKGROUND VIDEO OVERLAY SYSTEM
+       ========================================== */
+    .video-background-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -2;
+      overflow: hidden;
+    }
+
+    .video-background-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.7) contrast(1.1);
+    }
+
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle, rgba(8,28,21,0.4) 0%, rgba(8,28,21,0.85) 100%);
+      z-index: -1;
+    }
+
+    /* ==========================================
+       3. ENTERPRISE NAVIGATION BAR
+       ========================================== */
+    .navbar {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-      overflow: hidden;
-    }
-
-    .leaf {
-      position: absolute;
-      top: -10%;
-      user-select: none;
-      animation: fall linear infinite;
-      opacity: 0.7;
-      font-size: 1.5rem;
-    }
-
-    @keyframes fall {
-      0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0.8; }
-      50% { transform: translateY(50vh) rotate(180deg) translateX(50px); }
-      100% { transform: translateY(105vh) rotate(360deg) translateX(-30px); opacity: 0.2; }
-    }
-
-    .leaf:nth-child(1) { left: 5%; animation-duration: 12s; animation-delay: 0s; }
-    .leaf:nth-child(2) { left: 20%; animation-duration: 15s; animation-delay: 2s; }
-    .leaf:nth-child(3) { left: 35%; animation-duration: 10s; animation-delay: 4s; }
-    .leaf:nth-child(4) { left: 50%; animation-duration: 14s; animation-delay: 1s; }
-    .leaf:nth-child(5) { left: 65%; animation-duration: 11s; animation-delay: 3s; }
-    .leaf:nth-child(6) { left: 80%; animation-duration: 16s; animation-delay: 5s; }
-    .leaf:nth-child(7) { left: 92%; animation-duration: 13s; animation-delay: 2.5s; }
-
-    h1, h2, h3 { font-family: 'Fredoka', cursive; }
-
-    /* Navigation */
-    .navbar {
+      padding: 1.25rem 6%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.2rem 8%;
-      background-color: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      z-index: 1000;
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--glass-border);
+      transition: var(--transition-base);
     }
 
-    .logo { font-size: 1.5rem; font-weight: 700; color: #1b5e20; }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: #fff;
+    }
 
-    .nav-links {
+    .nav-brand i {
+      font-size: 1.8rem;
+      color: var(--accent);
+    }
+
+    .nav-brand span {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-menu {
       display: flex;
       list-style: none;
-      gap: 2rem;
+      gap: 2.5rem;
       align-items: center;
     }
 
-    .nav-links a { text-decoration: none; color: #334155; font-weight: 600; }
-    
-    .btn-ticket {
-      background: linear-gradient(135deg, #ff9800, #f57c00);
-      color: white !important;
-      padding: 0.7rem 1.6rem;
-      border-radius: 30px;
-      font-weight: 700 !important;
-      box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
-    }
-
-    /* Hero */
-    .hero {
-      padding: 5rem 1.5rem 3rem 1.5rem;
-      text-align: center;
-      max-width: 850px;
-      margin: 0 auto;
+    .nav-link {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition-base);
       position: relative;
-      z-index: 2;
     }
 
-    .hero h1 { font-size: 3.5rem; color: #1b5e20; margin-bottom: 1.2rem; line-height: 1.2; }
-    .hero p { font-size: 1.25rem; color: #475569; margin-bottom: 2rem; }
+    .nav-link:hover {
+      color: var(--accent);
+    }
 
-    .btn-main {
-      background: linear-gradient(135deg, #4caf50, #2e7d32);
-      color: white;
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition-base);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .btn-ticket-nav {
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      color: var(--dark) !important;
+      padding: 0.75rem 1.8rem;
+      border-radius: 50px;
+      font-weight: 700 !important;
+      box-shadow: 0 4px 15px rgba(233, 196, 106, 0.3);
+    }
+
+    .btn-ticket-nav:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(233, 196, 106, 0.5);
+    }
+
+    /* ==========================================
+       4. HERO SECTION
+       ========================================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem 2rem;
+      color: #fff;
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .badge-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.25rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--glass-border);
+      border-radius: 50px;
+      backdrop-filter: blur(10px);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      line-height: 1.1;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2.5rem;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      color: #fff;
       padding: 1rem 2.5rem;
-      border-radius: 35px;
-      font-size: 1.15rem;
+      border-radius: 50px;
       font-weight: 700;
       text-decoration: none;
-      box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
-      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: var(--transition-base);
     }
 
-    /* Info Bar */
-    .info-bar {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      background: rgba(255, 255, 255, 0.8);
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(45, 106, 79, 0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(10px);
-      padding: 2rem;
-      margin: 2rem auto;
-      border-radius: 25px;
-      max-width: 85%;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      position: relative;
-      z-index: 2;
+      color: #fff;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid var(--glass-border);
+      transition: var(--transition-base);
     }
 
-    .info-item { text-align: center; }
-    .info-item h4 { color: #2e7d32; font-size: 1.15rem; }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-3px);
+    }
 
-    /* Wahana Grid (5 Wahana) */
-    .section { padding: 4rem 8%; text-align: center; position: relative; z-index: 2; }
-    .section-title { font-size: 2.5rem; color: #1b5e20; margin-bottom: 0.5rem; }
-    .section-subtitle { color: #64748b; margin-bottom: 3.5rem; font-size: 1.15rem; }
+    /* ==========================================
+       5. METRICS & QUICK INFO SECTION
+       ========================================== */
+    .metrics-container {
+      max-width: 1200px;
+      margin: -4rem auto 4rem auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 10;
+    }
 
-    .grid-container {
+    .metrics-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      padding: 2.5rem;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     }
 
-    .card {
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(8px);
-      border-radius: 28px;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.95);
-      text-align: left;
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-    }
-
-    .card img { width: 100%; height: 210px; object-fit: cover; }
-    .card-content { padding: 1.8rem; }
-    .card-tag { display: inline-block; background: #e8f5e9; color: #2e7d32; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.8rem; }
-    .card-content h3 { color: #1b5e20; font-size: 1.4rem; margin-bottom: 0.5rem; }
-    .card-content p { color: #64748b; font-size: 0.95rem; }
-
-    footer {
-      background-color: #1b5e20;
-      color: #e8f5e9;
+    .metric-item {
       text-align: center;
-      padding: 3rem 1rem;
-      margin-top: 4rem;
-      position: relative;
-      z-index: 2;
+      color: #fff;
+      border-right: 1px solid rgba(255,255,255,0.1);
     }
 
-    @media (max-width: 768px) {
-      .navbar { flex-direction: column; gap: 1rem; }
-      .hero h1 { font-size: 2.4rem; }
+    .metric-item:last-child {
+      border-right: none;
+    }
+
+    .metric-item i {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .metric-item h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .metric-item p {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* ==========================================
+       6. WAHANA SECTION & ACCURATE CARDS
+       ========================================== */
+    .section-wahana {
+      padding: 6rem 6%;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 4rem auto;
+      color: #fff;
+    }
+
+    .section-header h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-header p {
+      color: rgba(255,255,255,0.8);
+      font-size: 1.1rem;
+    }
+
+    .wahana-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .wahana-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      transition: var(--transition-base);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .wahana-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+    }
+
+    .card-image-wrapper {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+    }
+
+    .card-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .wahana-card:hover .card-image-wrapper img {
+      transform: scale(1.08);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(8, 28, 21, 0.8);
+      backdrop-filter: blur(8px);
+      color: var(--accent);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border: 1px solid var(--glass-border);
+    }
+
+    .card-body {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-body h3 {
+      font-size: 1.6rem;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card-body p {
+      color: #555;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .card-features {
+      list-style: none;
+      margin-bottom: 1.5rem;
+      border-top: 1px solid #eee;
+      padding-top: 1rem;
+    }
+
+    .card-features li {
+      font-size: 0.85rem;
+      color: #444;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card-features li i {
+      color: var(--primary-light);
+    }
+
+    .btn-card {
+      text-align: center;
+      padding: 0.8rem 1.5rem;
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: var(--transition-base);
+    }
+
+    .btn-card:hover {
+      background: var(--primary-light);
+    }
+
+    /* ==========================================
+       7. INDUSTRIAL FOOTER
+       ========================================== */
+    footer {
+      background: var(--dark);
+      color: rgba(255, 255, 255, 0.7);
+      padding: 5rem 6% 2rem 6%;
+      border-top: 1px solid var(--glass-border);
+      position: relative;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      max-width: 1400px;
+      margin: 0 auto 4rem auto;
+    }
+
+    .footer-brand h3 {
+      color: #fff;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links h4, .footer-contact h4 {
+      color: #fff;
+      font-size: 1.2rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links ul li a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: var(--transition-base);
+    }
+
+    .footer-links ul li a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.875rem;
+    }
+
+    /* Responsive Breakdown */
+    @media (max-width: 992px) {
+      .hero h1 { font-size: 2.8rem; }
+      .metrics-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem; }
+      .nav-menu { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Efek Daun Melayang -->
-  <div class="leaves-container">
-    <div class="leaf">🍃</div>
-    <div class="leaf">🌿</div>
-    <div class="leaf">🍃</div>
-    <div class="leaf">🌱</div>
-    <div class="leaf">🌿</div>
-    <div class="leaf">🍃</div>
-    <div class="leaf">🌱</div>
+  <!-- ==========================================
+       BACKGROUND VIDEO OVERLAY (5 SATWA WAHANA)
+       ========================================== -->
+  <div class="video-background-container">
+    <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=1920&q=80">
+      <!-- Video stok alam dan hewan berkualitas tinggi -->
+      <source src="https://assets.mixkit.co/videos/preview/mixkit-exotic-wild-birds-in-a-tree-41553-large.mp4" type="video/mp4">
+    </video>
   </div>
+  <div class="video-overlay"></div>
 
-  <!-- Navbar -->
+  <!-- ==========================================
+       NAVIGATION BAR
+       ========================================== -->
   <nav class="navbar">
-    <div class="logo">🌿 Jagat Satwa Nusantara</div>
-    <ul class="nav-links">
-      <li><a href="#home">Beranda</a></li>
-      <li><a href="#wahana">5 Wahana Utama</a></li>
-      <li><a href="#info">Informasi</a></li>
-      <li><a href="#tiket" class="btn-ticket">🎟️ Beli Tiket</a></li>
+    <a href="#" class="nav-brand">
+      <i class="fa-solid fa-leaf"></i>
+      <span>JAGAT SATWA</span>
+    </a>
+    <ul class="nav-menu">
+      <li><a href="#home" class="nav-link">Beranda</a></li>
+      <li><a href="#wahana" class="nav-link">5 Wahana Utama</a></li>
+      <li><a href="#konservasi" class="nav-link">Konservasi</a></li>
+      <li><a href="#fasilitas" class="nav-link">Fasilitas</a></li>
+      <li><a href="#tiket" class="nav-link btn-ticket-nav"><i class="fa-solid fa-ticket"></i> Beli Tiket</a></li>
     </ul>
   </nav>
 
-  <!-- Hero -->
+  <!-- ==========================================
+       HERO SECTION
+       ========================================== -->
   <section class="hero" id="home">
-    <h1>Petualangan Satwa Edukatif Keluarga 🐾</h1>
-    <p>Jelajahi keajaiban keanekaragaman hayati Indonesia di 5 zona wisata alam interaktif Taman Mini Indonesia Indah.</p>
-    <a href="#wahana" class="btn-main">Mulai Petualangan</a>
+    <div class="hero-content">
+      <div class="badge-hero">
+        <i class="fa-solid fa-shield-halved"></i> Konservasi & Edukasi Terpadu TMII
+      </div>
+      <h1>Rasakan Keajaiban 5 Ekosistem Satwa Nusantara</h1>
+      <p>Petualangan interaktif kelas dunia yang menggabungkan konservasi ilmiah, keanekaragaman hayati, dan pengalaman keluarga yang tak terlupakan.</p>
+      <div class="hero-actions">
+        <a href="#wahana" class="btn-primary">Jelajahi 5 Wahana</a>
+        <a href="#tiket" class="btn-secondary">Jadwal & Tiket</a>
+      </div>
+    </div>
   </section>
 
-  <!-- Info Quick Bar -->
-  <div class="info-bar" id="info">
-    <div class="info-item">
-      <h4>📍 Lokasi</h4>
-      <p>TMII, Jakarta Timur</p>
-    </div>
-    <div class="info-item">
-      <h4>⏰ Jam Operasional</h4>
-      <p>08.00 - 17.00 WIB</p>
-    </div>
-    <div class="info-item">
-      <h4>🎟️ Tiket masuk</h4>
-      <p>Mulai Rp 30.000</p>
+  <!-- ==========================================
+       METRICS & QUICK STATS
+       ========================================== -->
+  <div class="metrics-container">
+    <div class="metrics-grid">
+      <div class="metric-item">
+        <i class="fa-solid fa-paw"></i>
+        <h4>5 Zona Utama</h4>
+        <p>Taman Satwa Tematik</p>
+      </div>
+      <div class="metric-item">
+        <i class="fa-solid fa-dove"></i>
+        <h4>300+ Spesies</h4>
+        <p>Satwa Endemik Dilindungi</p>
+      </div>
+      <div class="metric-item">
+        <i class="fa-solid fa-tree"></i>
+        <h4>12 Hektar</h4>
+        <p>Area Alam Hijau Modern</p>
+      </div>
+      <div class="metric-item">
+        <i class="fa-solid fa-users"></i>
+        <h4>100% Safe</h4>
+        <p>Ramah Keluarga & Anak</p>
+      </div>
     </div>
   </div>
 
-  <!-- 5 Wahana Utama -->
-  <section class="section" id="wahana">
-    <h2 class="section-title">5 Destinasi Satwa Impian</h2>
-    <p class="section-subtitle">Pengalaman interaktif, aman, dan berkesan untuk edukasi seluruh keluarga.</p>
-    
-    <div class="grid-container">
-      
+  <!-- ==========================================
+       5 WAHANA UTAMA (FOTO SESUAI & AKURAT)
+       ========================================== -->
+  <section class="section-wahana" id="wahana">
+    <div class="section-header">
+      <h2>5 Wahana Unggulan</h2>
+      <p>Setiap zona dirancang khusus menyerupai habitat asli untuk memberikan pengalaman edukasi yang mendalam.</p>
+    </div>
+
+    <div class="wahana-grid">
+
       <!-- 1. Taman Burung -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1552728089-57bdde30beb3?auto=format&fit=crop&w=600&q=80" alt="Taman Burung">
-        <div class="card-content">
-          <span class="card-tag">Zona Melodi Udara</span>
-          <h3>🦜 Taman Burung</h3>
-          <p>Kubah aviary raksasa tempat ratusan spesies burung eksotis Nusantara terbang bebas. Nikmati pengalaman memberi makan langsung!</p>
+      <div class="wahana-card">
+        <div class="card-image-wrapper">
+          <!-- Foto Burung Makau / Avian yang Akurat -->
+          <img src="https://images.unsplash.com/photo-1552728089-57bdde30beb3?auto=format&fit=crop&w=800&q=80" alt="Taman Burung">
+          <span class="card-badge">Avian Aviary Dome</span>
+        </div>
+        <div class="card-body">
+          <h3><i class="fa-solid fa-crow" style="color:#2d6a4f;"></i> Taman Burung</h3>
+          <p>Kubah aviary raksasa tempat ribuan burung eksotis terbang bebas di atas lanskap tropis yang indah.</p>
+          <ul class="card-features">
+            <li><i class="fa-solid fa-check-circle"></i> Feeding Show Interaktif</li>
+            <li><i class="fa-solid fa-check-circle"></i> Ratusan Burung Endemik</li>
+          </ul>
+          <a href="#" class="btn-card">Detail Wahana</a>
         </div>
       </div>
 
-      <!-- 2. Museum Komodo -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=600&q=80" alt="Museum Komodo">
-        <div class="card-content">
-          <span class="card-tag">Jelajah Satwa Purba</span>
-          <h3>🦎 Museum Komodo & Reptil</h3>
-          <p>Melihat dari dekat naga purba komodo dan ragam reptil endemik Indonesia dalam konsep pameran edukatif modern.</p>
+      <!-- 2. Museum Komodo & Reptil -->
+      <div class="wahana-card">
+        <div class="card-image-wrapper">
+          <!-- Foto Komodo / Reptil Purba yang Akurat -->
+          <img src="https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=800&q=80" alt="Komodo Dragon">
+          <span class="card-badge">Prehistoric Realm</span>
+        </div>
+        <div class="card-body">
+          <h3><i class="fa-solid fa-dragon" style="color:#e76f51;"></i> Museum Komodo</h3>
+          <p>Jelajahi keagungan Komodo sebagai predator purba beserta koleksi herpetologi dan reptil Nusantara.</p>
+          <ul class="card-features">
+            <li><i class="fa-solid fa-check-circle"></i> Area Komodo Raksasa</li>
+            <li><i class="fa-solid fa-check-circle"></i> Diorama Digital Interaktif</li>
+          </ul>
+          <a href="#" class="btn-card">Detail Wahana</a>
         </div>
       </div>
 
       <!-- 3. Dunia Air Tawar -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=600&q=80" alt="Dunia Air Tawar">
-        <div class="card-content">
-          <span class="card-tag">Ekosistem Perairan</span>
-          <h3>🐟 Dunia Air Tawar</h3>
-          <p>Akuarium raksasa yang menampilkan keanekaragaman biota air tawar terunik lengkap dengan zona *Touch Pool* anak.</p>
+      <div class="wahana-card">
+        <div class="card-image-wrapper">
+          <!-- Foto Ikan Air Tawar / Arwana yang Akurat -->
+          <img src="https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80" alt="Dunia Air Tawar">
+          <span class="card-badge">Aquatic Ecosystem</span>
+        </div>
+        <div class="card-body">
+          <h3><i class="fa-solid fa-fish" style="color:#0077b6;"></i> Dunia Air Tawar</h3>
+          <p>Taman akuarium air tawar terbesar yang menampilkan keanekaragaman ekosistem sungai dan danau.</p>
+          <ul class="card-features">
+            <li><i class="fa-solid fa-check-circle"></i> Touch Pool Anak</li>
+            <li><i class="fa-solid fa-check-circle"></i> Koleksi Ikan Purba Arwana</li>
+          </ul>
+          <a href="#" class="btn-card">Detail Wahana</a>
         </div>
       </div>
 
       <!-- 4. Dunia Serangga -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&w=600&q=80" alt="Dunia Serangga">
-        <div class="card-content">
-          <span class="card-tag">Dunia Mikro Keajaiban</span>
-          <h3>🦋 Dunia Serangga</h3>
-          <p>Taman kupu-kupu terbuka dan diorama serangga unik Nusantara. Tempat si kecil belajar proses metamorfosis alami.</p>
+      <div class="wahana-card">
+        <div class="card-image-wrapper">
+          <!-- Foto Kupu-Kupu / Serangga yang Akurat -->
+          <img src="https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&w=800&q=80" alt="Dunia Serangga">
+          <span class="card-badge">Micro World</span>
+        </div>
+        <div class="card-body">
+          <h3><i class="fa-solid fa-bug" style="color:#e9c46a;"></i> Dunia Serangga</h3>
+          <p>Keajaiban dunia mikro melalui taman kupu-kupu terbuka dan koleksi insetarium terlengkap.</p>
+          <ul class="card-features">
+            <li><i class="fa-solid fa-check-circle"></i> Butterfly Open Garden</li>
+            <li><i class="fa-solid fa-check-circle"></i> Edukasi Metamorfosis</li>
+          </ul>
+          <a href="#" class="btn-card">Detail Wahana</a>
         </div>
       </div>
 
       <!-- 5. Farm House -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=600&q=80" alt="Farm House">
-        <div class="card-content">
-          <span class="card-tag">Interaksi Satwa Lucu</span>
-          <h3>🌾 Farm House</h3>
-          <p>Area peternakan bernuansa pedesaan ramah anak. Pengunjung dapat bermain, berfoto, dan memberi pakan kelinci serta domba mini.</p>
+      <div class="wahana-card">
+        <div class="card-image-wrapper">
+          <!-- Foto Hewan Ternak Lucu (Domba/Kelinci) yang Akurat -->
+          <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=800&q=80" alt="Farm House">
+          <span class="card-badge">Petting Zoo</span>
+        </div>
+        <div class="card-body">
+          <h3><i class="fa-solid fa-cow" style="color:#6b705c;"></i> Farm House</h3>
+          <p>Area peternakan edukatif di mana si kecil dapat berinteraksi dan memberi makan domba mini serta kelinci.</p>
+          <ul class="card-features">
+            <li><i class="fa-solid fa-check-circle"></i> Petting Zoo Ramah Anak</li>
+            <li><i class="fa-solid fa-check-circle"></i> Area Foto Pedesaan</li>
+          </ul>
+          <a href="#" class="btn-card">Detail Wahana</a>
         </div>
       </div>
 
     </div>
   </section>
 
+  <!-- ==========================================
+       INDUSTRIAL FOOTER
+       ========================================== -->
   <footer>
-    <p>&copy; 2026 Jagat Satwa Nusantara - Taman Mini Indonesia Indah.</p>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3><i class="fa-solid fa-leaf" style="color:var(--accent);"></i> Jagat Satwa</h3>
+        <p>Destinasi wahana satwa dan konservasi modern di kawasan Taman Mini Indonesia Indah (TMII), Jakarta.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="#home">Beranda</a></li>
+          <li><a href="#wahana">5 Wahana</a></li>
+          <li><a href="#tiket">Pembelian Tiket</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Hubungi Kami</h4>
+        <p><i class="fa-solid fa-location-dot"></i> TMII, Jakarta Timur, Indonesia</p>
+        <p><i class="fa-solid fa-envelope"></i> info@jagatsatwanusantara.id</p>
+        <p><i class="fa-solid fa-phone"></i> (021) 8409270</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Jagat Satwa Nusantara - PT Hijau Flora Indonesia. All Rights Reserved.</p>
+    </div>
   </footer>
 
 </body>
