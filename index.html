@@ -13,12 +13,69 @@
       box-sizing: border-box;
     }
     
+    /* BACKGROUND BERGERAK DI SELURUH HALAMAN (Animated Gradient) */
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       color: #1a2e22;
-      background-color: #f6faf7;
+      background: linear-gradient(-45deg, #e8f5e9, #f1f8e9, #e0f2f1, #f4fbf7);
+      background-size: 400% 400%;
+      animation: gradientMove 15s ease infinite;
       line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
     }
+
+    /* Animasi Bergerak Latar Belakang */
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* WADAH EFEK DAUN MELAYANG */
+    .leaves-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .leaf {
+      position: absolute;
+      top: -10%;
+      user-select: none;
+      animation: fall linear infinite;
+      opacity: 0.7;
+      font-size: 1.5rem;
+    }
+
+    /* Animasi Daun Jatuh & Berputar */
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg) translateX(0);
+        opacity: 0.8;
+      }
+      50% {
+        transform: translateY(50vh) rotate(180deg) translateX(50px);
+      }
+      100% {
+        transform: translateY(105vh) rotate(360deg) translateX(-30px);
+        opacity: 0.2;
+      }
+    }
+
+    /* Pengaturan Variasi Posisi & Kecepatan Daun */
+    .leaf:nth-child(1) { left: 5%; animation-duration: 12s; animation-delay: 0s; font-size: 1.2rem; }
+    .leaf:nth-child(2) { left: 20%; animation-duration: 15s; animation-delay: 2s; font-size: 1.8rem; }
+    .leaf:nth-child(3) { left: 35%; animation-duration: 10s; animation-delay: 4s; font-size: 1.4rem; }
+    .leaf:nth-child(4) { left: 50%; animation-duration: 14s; animation-delay: 1s; font-size: 1.6rem; }
+    .leaf:nth-child(5) { left: 65%; animation-duration: 11s; animation-delay: 3s; font-size: 1.3rem; }
+    .leaf:nth-child(6) { left: 80%; animation-duration: 16s; animation-delay: 5s; font-size: 1.7rem; }
+    .leaf:nth-child(7) { left: 92%; animation-duration: 13s; animation-delay: 2.5s; font-size: 1.5rem; }
 
     h1, h2, h3 {
       font-family: 'Fredoka', cursive;
@@ -30,7 +87,8 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.2rem 8%;
-      background-color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
       box-shadow: 0 4px 20px rgba(0,0,0,0.04);
       position: sticky;
       top: 0;
@@ -38,12 +96,9 @@
     }
 
     .logo {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 700;
       color: #1b5e20;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
     }
 
     .nav-links {
@@ -55,9 +110,9 @@
 
     .nav-links a {
       text-decoration: none;
-      color: #4a5568;
+      color: #334155;
       font-weight: 600;
-      transition: all 0.2s ease;
+      transition: all 0.2s;
     }
 
     .nav-links a:hover {
@@ -65,89 +120,84 @@
     }
 
     .btn-ticket {
-      background-color: #ff9800;
+      background: linear-gradient(135deg, #ff9800, #f57c00);
       color: white !important;
-      padding: 0.6rem 1.4rem;
+      padding: 0.7rem 1.6rem;
       border-radius: 30px;
       font-weight: 700 !important;
-      box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
-      transition: transform 0.2s, box-shadow 0.2s !important;
+      box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+      transition: transform 0.2s !important;
     }
 
     .btn-ticket:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(255, 152, 0, 0.4);
+      transform: scale(1.05);
     }
 
-    /* Hero Section */
+    /* Hero Section / Banner Atas */
     .hero {
-      background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 100%), 
-                  url('https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-      height: 75vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      padding: 5rem 1.5rem 3rem 1.5rem;
       text-align: center;
-      color: white;
-      padding: 0 1.5rem;
+      max-width: 850px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
     }
 
     .hero h1 {
-      font-size: 3.2rem;
-      margin-bottom: 1rem;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      font-size: 3.5rem;
+      color: #1b5e20;
+      margin-bottom: 1.2rem;
+      line-height: 1.2;
     }
 
     .hero p {
       font-size: 1.25rem;
-      max-width: 650px;
+      color: #475569;
       margin-bottom: 2rem;
-      font-weight: 400;
-      opacity: 0.95;
     }
 
     .btn-main {
-      background-color: #2e7d32;
+      background: linear-gradient(135deg, #4caf50, #2e7d32);
       color: white;
-      padding: 0.9rem 2.2rem;
-      border-radius: 30px;
-      font-size: 1.1rem;
+      padding: 1rem 2.5rem;
+      border-radius: 35px;
+      font-size: 1.15rem;
       font-weight: 700;
       text-decoration: none;
-      box-shadow: 0 4px 15px rgba(46, 125, 50, 0.4);
+      box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
       transition: all 0.3s;
+      display: inline-block;
     }
 
     .btn-main:hover {
-      background-color: #1b5e20;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(46, 125, 50, 0.5);
     }
 
-    /* Info Floating Cards */
+    /* Info Floating Cards dengan Transparansi Kaca (Glassmorphism) */
     .info-bar {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.5rem;
-      background-color: #ffffff;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
       padding: 2rem;
-      margin: -50px auto 0 auto;
-      position: relative;
-      border-radius: 20px;
+      margin: 2rem auto;
+      border-radius: 25px;
       max-width: 85%;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-      z-index: 10;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      position: relative;
+      z-index: 2;
     }
 
     .info-item {
       text-align: center;
-      padding: 0.5rem;
     }
 
     .info-item h4 {
       color: #2e7d32;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       margin-bottom: 0.3rem;
     }
 
@@ -156,22 +206,24 @@
       font-weight: 600;
     }
 
-    /* Main Section / Wahana */
+    /* Section Wahana */
     .section {
-      padding: 5rem 8% 3rem 8%;
+      padding: 4rem 8%;
       text-align: center;
+      position: relative;
+      z-index: 2;
     }
 
     .section-title {
-      font-size: 2.4rem;
+      font-size: 2.5rem;
       color: #1b5e20;
       margin-bottom: 0.5rem;
     }
 
     .section-subtitle {
       color: #64748b;
-      margin-bottom: 3rem;
-      font-size: 1.1rem;
+      margin-bottom: 3.5rem;
+      font-size: 1.15rem;
     }
 
     .grid-container {
@@ -181,39 +233,40 @@
     }
 
     .card {
-      background-color: #ffffff;
-      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(8px);
+      border-radius: 28px;
       overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
       transition: all 0.3s ease;
-      border: 1px solid #eef5f0;
+      border: 1px solid rgba(255, 255, 255, 0.95);
       text-align: left;
     }
 
     .card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
     }
 
     .card img {
       width: 100%;
-      height: 220px;
+      height: 230px;
       object-fit: cover;
     }
 
     .card-content {
-      padding: 1.8rem;
+      padding: 2rem;
     }
 
     .card-content h3 {
       color: #2e7d32;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       margin-bottom: 0.6rem;
     }
 
     .card-content p {
       color: #64748b;
-      font-size: 0.95rem;
+      font-size: 0.98rem;
     }
 
     /* Footer */
@@ -223,14 +276,11 @@
       text-align: center;
       padding: 3rem 1rem;
       margin-top: 4rem;
+      position: relative;
+      z-index: 2;
     }
 
-    footer p {
-      font-size: 0.95rem;
-      opacity: 0.9;
-    }
-
-    /* Mobile Responsive */
+    /* Responsif Mobile */
     @media (max-width: 768px) {
       .navbar {
         flex-direction: column;
@@ -243,10 +293,9 @@
         justify-content: center;
       }
       .hero h1 {
-        font-size: 2.2rem;
+        font-size: 2.4rem;
       }
       .info-bar {
-        margin-top: -30px;
         width: 90%;
       }
     }
@@ -254,22 +303,36 @@
 </head>
 <body>
 
+  <!-- Efek Daun Melayang Berputar di Latar Belakang -->
+  <div class="leaves-container">
+    <div class="leaf">🍃</div>
+    <div class="leaf">🌿</div>
+    <div class="leaf">🍃</div>
+    <div class="leaf">🌱</div>
+    <div class="leaf">🌿</div>
+    <div class="leaf">🍃</div>
+    <div class="leaf">🌱</div>
+  </div>
+
+  <!-- Navigation -->
   <nav class="navbar">
     <div class="logo">🌿 Jagat Satwa Nusantara</div>
     <ul class="nav-links">
       <li><a href="#home">Beranda</a></li>
-      <li><a href="#wahana">Wahana Utama</a></li>
+      <li><a href="#wahana">Zona Satwa</a></li>
       <li><a href="#info">Informasi</a></li>
-      <li><a href="#tiket" class="btn-ticket">Beli Tiket Online</a></li>
+      <li><a href="#tiket" class="btn-ticket">🎟️ Beli Tiket</a></li>
     </ul>
   </nav>
 
+  <!-- Hero Content -->
   <section class="hero" id="home">
-    <h1>Petualangan Satwa Edukatif Keluarga</h1>
-    <p>Mari mengenal lebih dekat kekayaan flora dan fauna Indonesia dalam kawasan pelestarian alam modern di TMII.</p>
-    <a href="#wahana" class="btn-main">Jelajahi Wahana</a>
+    <h1>Petualangan Satwa Edukatif Keluarga 🐾</h1>
+    <p>Mari mengenal lebih dekat kekayaan flora & fauna Nusantara dalam kawasan pelestarian alam modern di Taman Mini Indonesia Indah.</p>
+    <a href="#wahana" class="btn-main">Mulai Petualangan</a>
   </section>
 
+  <!-- Info Bar -->
   <div class="info-bar" id="info">
     <div class="info-item">
       <h4>📍 Lokasi Utama</h4>
@@ -281,43 +344,47 @@
     </div>
     <div class="info-item">
       <h4>🎟️ Tiket Masuk</h4>
-      <p>Mulai Rp 30.000 / orang</p>
+      <p>Mulai Rp 30.000 / Orang</p>
     </div>
   </div>
 
+  <!-- Zona Wahana Utama -->
   <section class="section" id="wahana">
-    <h2 class="section-title">Eksplorasi 3 Zona Satwa</h2>
-    <p class="section-subtitle">Pengalaman edukatif yang aman, seru, dan menyenangkan untuk seluruh anggota keluarga.</p>
+    <h2 class="section-title">Destinasi Satwa Favorit</h2>
+    <p class="section-subtitle">Pengalaman rekreasi edukatif yang aman, nyaman, dan berkesan untuk si kecil.</p>
     
     <div class="grid-container">
+      
       <div class="card">
         <img src="https://images.unsplash.com/photo-1552728089-57bdde30beb3?auto=format&fit=crop&w=600&q=80" alt="Taman Burung">
         <div class="card-content">
-          <h3>Taman Burung</h3>
-          <p>Kubah aviary raksasa yang menampung ratusan spesies burung langka khas Indonesia Barat hingga Timur.</p>
+          <h3>🦜 Taman Burung</h3>
+          <p>Melihat ratusan spesies unggas dan burung eksotis terlengkap dari sabang sampai merauke di dalam kubah raksasa.</p>
         </div>
       </div>
 
       <div class="card">
         <img src="https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=600&q=80" alt="Museum Komodo">
         <div class="card-content">
-          <h3>Museum Komodo & Reptil</h3>
-          <p>Pusat edukasi reptil terlengkap untuk melihat komodo serta fauna endemik Indonesia secara dekat.</p>
+          <h3>🦎 Museum Komodo</h3>
+          <p>Mengenal reptil purba khas Nusantara serta ragam fauna unik Indonesia dalam konsep pameran modern.</p>
         </div>
       </div>
 
       <div class="card">
         <img src="https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=600&q=80" alt="Dunia Air Tawar">
         <div class="card-content">
-          <h3>Dunia Air Tawar</h3>
-          <p>Wahana akuarium terbesa di Asia Tenggara yang menampilkan keanekaragaman ekosistem perairan tawar.</p>
+          <h3>🐟 Dunia Air Tawar</h3>
+          <p>Menjelajahi akuarium raksasa tempat tinggal berbagai ekosistem ikan dan biota air tawar terunik.</p>
         </div>
       </div>
+
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2026 Jagat Satwa Nusantara - Taman Mini Indonesia Indah. Hak Cipta Dilindungi.</p>
+    <p>&copy; 2026 Jagat Satwa Nusantara - Taman Mini Indonesia Indah.</p>
   </footer>
 
 </body>
