@@ -66,7 +66,7 @@
       width: 100vw;
       height: 100vh;
       object-fit: cover;
-      filter: brightness(0.55) contrast(1.1);
+      filter: brightness(0.50) contrast(1.15) saturate(1.1);
       pointer-events: none;
     }
 
@@ -87,7 +87,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: radial-gradient(circle, rgba(8,28,21,0.2) 0%, rgba(8,28,21,0.85) 100%);
+      background: radial-gradient(circle at 30% 40%, rgba(8,28,21,0.15) 0%, rgba(8,28,21,0.85) 100%);
       z-index: -1;
     }
 
@@ -651,13 +651,14 @@
 
   <!-- ==========================================
        HYBRID BACKGROUND VIDEO (AUTOPLAY PASTI BERJALAN)
+       HD VIDEO HEWAN - KOMPILASI SATWA LIAR
        ========================================== -->
   <div class="video-background-container">
-    <!-- Video YouTube Embed Atraksi Satwa (Anti-CORS, Muted, & Loop Autoplay) -->
+    <!-- Video YouTube HD Kompilasi Satwa Liar (Anti-CORS, Muted, & Loop Autoplay) -->
     <iframe 
       id="bgYoutube"
-      src="https://www.youtube.com/embed/5qap5aO4i9A?autoplay=1&mute=1&controls=0&loop=1&playlist=5qap5aO4i9A&showinfo=0&rel=0&enablejsapi=1" 
-      title="Background Animal Feeding" 
+      src="https://www.youtube.com/embed/kT9dKTRClQQ?autoplay=1&mute=1&controls=0&loop=1&playlist=kT9dKTRClQQ&showinfo=0&rel=0&enablejsapi=1" 
+      title="HD Wildlife Compilation - Lions, Elephants, Giraffes & More" 
       frameborder="0" 
       allow="autoplay; encrypted-media" 
       allowfullscreen>
@@ -668,7 +669,7 @@
   <!-- Floating Video Widget Controller -->
   <div class="video-controls">
     <button class="video-btn" id="reloadVideoBtn" title="Muat Ulang Video"><i class="fa-solid fa-rotate-right"></i></button>
-    <span class="video-tagline"><i class="fa-solid fa-circle-play" style="color:#2ec4b6;"></i> Live Feeding Background</span>
+    <span class="video-tagline"><i class="fa-solid fa-circle-play" style="color:#2ec4b6;"></i> HD Wildlife Adventure</span>
   </div>
 
   <!-- ==========================================
@@ -922,113 +923,4 @@
           <li><i class="fa-solid fa-check" style="color:var(--primary);"></i> Gratis Akses Shuttle Bus</li>
           <li><i class="fa-solid fa-check" style="color:var(--primary);"></i> Hemat hingga Rp 80.000</li>
         </ul>
-        <a href="#" class="btn-primary" style="display:block; text-align:center;">Beli Pass Terusan</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       9. FASILITAS PENGUNJUNG
-       ========================================== -->
-  <section class="section-padding" id="fasilitas">
-    <div class="section-header">
-      <h2>Fasilitas Pengunjung</h2>
-      <p>Kenyamanan keluarga Anda adalah prioritas utama kami.</p>
-    </div>
-
-    <div class="fasilitas-grid">
-      <div class="fasilitas-card">
-        <i class="fa-solid fa-utensils"></i>
-        <h3>Food Court & Resto</h3>
-        <p>Pilihan kuliner lengkap bersertifikat halal dengan area duduk outdoor rindang.</p>
-      </div>
-
-      <div class="fasilitas-card">
-        <i class="fa-solid fa-wheelchair"></i>
-        <h3>Akses Stroller & Disabilitas</h3>
-        <p>Jalur ramah kursi roda dan stroller di seluruh area 5 wahana.</p>
-      </div>
-
-      <div class="fasilitas-card">
-        <i class="fa-solid fa-baby"></i>
-        <h3>Nursery Room AC</h3>
-        <p>Ruang laktasi dan tempat ganti popok bayi yang nyaman dan bersih.</p>
-      </div>
-
-      <div class="fasilitas-card">
-        <i class="fa-solid fa-bus"></i>
-        <h3>Eco Shuttle Bus</h3>
-        <p>Transportasi listrik ramah lingkungan gratis antar wahana.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       10. FAQ SECTION
-       ========================================== -->
-  <section class="section-padding" id="faq">
-    <div class="section-header">
-      <h2>Pertanyaan Sering Diajukan (FAQ)</h2>
-      <p>Informasi penting sebelum kunjungan Anda ke Jagat Satwa Nusantara.</p>
-    </div>
-
-    <div class="faq-container">
-      <div class="faq-item">
-        <h4><i class="fa-solid fa-circle-question"></i> Apakah anak-anak dikenakan tiket masuk?</h4>
-        <p>Anak-anak dengan tinggi badan di atas 80 cm wajib memiliki tiket masuk secara penuh.</p>
-      </div>
-      <div class="faq-item">
-        <h4><i class="fa-solid fa-circle-question"></i> Bolehkan membawa makanan dari luar?</h4>
-        <p>Untuk menjaga kebersihan habitat satwa, makanan luar tidak diperkenankan dibawa masuk ke area dalam wahana. Tersedia area restoran di luar zona wahana.</p>
-      </div>
-      <div class="faq-item">
-        <h4><i class="fa-solid fa-circle-question"></i> Apakah pakan hewan dijual di lokasi?</h4>
-        <p>Ya! Pakan resmi yang aman bagi hewan (seperti wortel kelinci dan pakan ikan) dapat dibeli di loket wahana Farm House & Dunia Air Tawar.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       11. INDUSTRIAL FOOTER
-       ========================================== -->
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <h3><i class="fa-solid fa-leaf" style="color:var(--accent);"></i> Jagat Satwa</h3>
-        <p>Destinasi wahana satwa dan konservasi modern di kawasan Taman Mini Indonesia Indah (TMII), Jakarta East Java, Indonesia.</p>
-      </div>
-      <div class="footer-links">
-        <h4>Navigasi</h4>
-        <ul style="list-style:none;">
-          <li><a href="#home" style="color:rgba(255,255,255,0.7); text-decoration:none;">Beranda</a></li>
-          <li><a href="#wahana" style="color:rgba(255,255,255,0.7); text-decoration:none;">5 Wahana</a></li>
-          <li><a href="#feeding" style="color:rgba(255,255,255,0.7); text-decoration:none;">Jadwal Feeding</a></li>
-          <li><a href="#tiket" style="color:rgba(255,255,255,0.7); text-decoration:none;">Harga Tiket</a></li>
-        </ul>
-      </div>
-      <div class="footer-contact">
-        <h4>Hubungi Kami</h4>
-        <p><i class="fa-solid fa-location-dot"></i> TMII, Jakarta Timur, Indonesia</p>
-        <p><i class="fa-solid fa-envelope"></i> info@jagatsatwanusantara.id</p>
-        <p><i class="fa-solid fa-phone"></i> (021) 8409270</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Jagat Satwa Nusantara. All Rights Reserved.</p>
-    </div>
-  </footer>
-
-  <!-- ==========================================
-       12. CONTROLLER SCRIPT
-       ========================================== -->
-  <script>
-    const reloadVideoBtn = document.getElementById('reloadVideoBtn');
-    const iframe = document.getElementById('bgYoutube');
-
-    reloadVideoBtn.addEventListener('click', () => {
-      iframe.src = iframe.src;
-    });
-  </script>
-
-</body>
-</html>
+        <a href="#" class="btn-primary" style="display:block; text-align:center;">Beli
