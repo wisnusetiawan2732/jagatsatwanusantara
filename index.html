@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Jagat Satwa Nusantara - Destinasi Wisata Satwa Edukatif & Konservasi Terpadu TMII Jakarta">
-  <title>Jagat Satwa Nusantara | Official Enterprise Website</title>
+  <title>Jagat Satwa Nusantara | Enterprise Web Portal</title>
   
   <!-- External Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,8 +23,8 @@
       --accent-hover: #f4a261;
       --dark: #081c15;
       --light: #f8f9fa;
-      --glass-bg: rgba(8, 28, 21, 0.65);
-      --glass-border: rgba(255, 255, 255, 0.12);
+      --glass-bg: rgba(8, 28, 21, 0.75);
+      --glass-border: rgba(255, 255, 255, 0.15);
       --card-bg: rgba(255, 255, 255, 0.95);
       --transition-base: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -64,7 +64,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: brightness(0.7) contrast(1.1);
+      filter: brightness(0.55) contrast(1.1);
     }
 
     .video-overlay {
@@ -73,7 +73,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: radial-gradient(circle, rgba(8,28,21,0.4) 0%, rgba(8,28,21,0.85) 100%);
+      background: radial-gradient(circle, rgba(8,28,21,0.3) 0%, rgba(8,28,21,0.85) 100%);
       z-index: -1;
     }
 
@@ -136,21 +136,6 @@
       color: var(--accent);
     }
 
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      width: 0%;
-      height: 2px;
-      background: var(--accent);
-      transition: var(--transition-base);
-    }
-
-    .nav-link:hover::after {
-      width: 100%;
-    }
-
     .btn-ticket-nav {
       background: linear-gradient(135deg, var(--accent), var(--accent-hover));
       color: var(--dark) !important;
@@ -198,15 +183,15 @@
     }
 
     .hero h1 {
-      font-size: 4rem;
-      line-height: 1.1;
+      font-size: 3.8rem;
+      line-height: 1.15;
       font-weight: 800;
       margin-bottom: 1.5rem;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      text-shadow: 0 4px 20px rgba(0,0,0,0.6);
     }
 
     .hero p {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       color: rgba(255, 255, 255, 0.9);
       margin-bottom: 2.5rem;
       max-width: 750px;
@@ -247,11 +232,6 @@
       text-decoration: none;
       border: 1px solid var(--glass-border);
       transition: var(--transition-base);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.25);
-      transform: translateY(-3px);
     }
 
     /* ==========================================
@@ -344,7 +324,6 @@
       transition: var(--transition-base);
       display: flex;
       flex-direction: column;
-      position: relative;
     }
 
     .wahana-card:hover {
@@ -373,7 +352,7 @@
       position: absolute;
       top: 1rem;
       right: 1rem;
-      background: rgba(8, 28, 21, 0.8);
+      background: rgba(8, 28, 21, 0.85);
       backdrop-filter: blur(8px);
       color: var(--accent);
       padding: 0.4rem 1rem;
@@ -391,7 +370,7 @@
     }
 
     .card-body h3 {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       color: var(--dark);
       margin-bottom: 0.75rem;
       display: flex;
@@ -443,14 +422,131 @@
     }
 
     /* ==========================================
-       7. INDUSTRIAL FOOTER
+       7. KONSERVASI SECTION
+       ========================================== */
+    .section-konservasi {
+      padding: 6rem 6%;
+      background: rgba(8, 28, 21, 0.6);
+      backdrop-filter: blur(15px);
+      border-top: 1px solid var(--glass-border);
+      border-bottom: 1px solid var(--glass-border);
+      color: #fff;
+    }
+
+    .konservasi-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .konservasi-text h2 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+    }
+
+    .konservasi-text p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 2rem;
+    }
+
+    .konservasi-list {
+      list-style: none;
+    }
+
+    .konservasi-list li {
+      margin-bottom: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .konservasi-list i {
+      font-size: 1.5rem;
+      color: var(--accent);
+      background: rgba(233, 196, 106, 0.15);
+      padding: 0.75rem;
+      border-radius: 12px;
+    }
+
+    .konservasi-list h4 {
+      font-size: 1.15rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .konservasi-list p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      margin: 0;
+    }
+
+    .konservasi-media img {
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      border: 1px solid var(--glass-border);
+    }
+
+    /* ==========================================
+       8. FASILITAS SECTION
+       ========================================== */
+    .section-fasilitas {
+      padding: 6rem 6%;
+    }
+
+    .fasilitas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .fasilitas-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      padding: 2.5rem 2rem;
+      border-radius: 20px;
+      color: #fff;
+      text-align: center;
+      transition: var(--transition-base);
+    }
+
+    .fasilitas-card:hover {
+      transform: translateY(-8px);
+      background: rgba(8, 28, 21, 0.85);
+      border-color: var(--accent);
+    }
+
+    .fasilitas-card i {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .fasilitas-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .fasilitas-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* ==========================================
+       9. INDUSTRIAL FOOTER
        ========================================== */
     footer {
       background: var(--dark);
       color: rgba(255, 255, 255, 0.7);
       padding: 5rem 6% 2rem 6%;
       border-top: 1px solid var(--glass-border);
-      position: relative;
     }
 
     .footer-grid {
@@ -498,10 +594,9 @@
       font-size: 0.875rem;
     }
 
-    /* Responsive Breakdown */
     @media (max-width: 992px) {
-      .hero h1 { font-size: 2.8rem; }
-      .metrics-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem; }
+      .hero h1 { font-size: 2.6rem; }
+      .konservasi-container { grid-template-columns: 1fr; }
       .nav-menu { display: none; }
     }
   </style>
@@ -509,12 +604,12 @@
 <body>
 
   <!-- ==========================================
-       BACKGROUND VIDEO OVERLAY (5 SATWA WAHANA)
+       BACKGROUND VIDEO OVERLAY (LOKAL & HANDAL)
        ========================================== -->
   <div class="video-background-container">
+    <!-- Video lokal terpercaya dengan autoplay tanpa hambatan -->
     <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=1920&q=80">
-      <!-- Video stok alam dan hewan berkualitas tinggi -->
-      <source src="https://assets.mixkit.co/videos/preview/mixkit-exotic-wild-birds-in-a-tree-41553-large.mp4" type="video/mp4">
+      <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
     </video>
   </div>
   <div class="video-overlay"></div>
@@ -529,7 +624,7 @@
     </a>
     <ul class="nav-menu">
       <li><a href="#home" class="nav-link">Beranda</a></li>
-      <li><a href="#wahana" class="nav-link">5 Wahana Utama</a></li>
+      <li><a href="#wahana" class="nav-link">5 Wahana</a></li>
       <li><a href="#konservasi" class="nav-link">Konservasi</a></li>
       <li><a href="#fasilitas" class="nav-link">Fasilitas</a></li>
       <li><a href="#tiket" class="nav-link btn-ticket-nav"><i class="fa-solid fa-ticket"></i> Beli Tiket</a></li>
@@ -544,8 +639,8 @@
       <div class="badge-hero">
         <i class="fa-solid fa-shield-halved"></i> Konservasi & Edukasi Terpadu TMII
       </div>
-      <h1>Rasakan Keajaiban 5 Ekosistem Satwa Nusantara</h1>
-      <p>Petualangan interaktif kelas dunia yang menggabungkan konservasi ilmiah, keanekaragaman hayati, dan pengalaman keluarga yang tak terlupakan.</p>
+      <h1>Petualangan Satwa Interaktif Nusantara</h1>
+      <p>Jelajahi kekayaan flora dan fauna Indonesia melalui 5 wahana edukatif modern berstandar internasional.</p>
       <div class="hero-actions">
         <a href="#wahana" class="btn-primary">Jelajahi 5 Wahana</a>
         <a href="#tiket" class="btn-secondary">Jadwal & Tiket</a>
@@ -554,7 +649,7 @@
   </section>
 
   <!-- ==========================================
-       METRICS & QUICK STATS
+       METRICS SECTION
        ========================================== -->
   <div class="metrics-container">
     <div class="metrics-grid">
@@ -582,12 +677,12 @@
   </div>
 
   <!-- ==========================================
-       5 WAHANA UTAMA (FOTO SESUAI & AKURAT)
+       5 WAHANA UTAMA (FOTO SESUAI)
        ========================================== -->
   <section class="section-wahana" id="wahana">
     <div class="section-header">
       <h2>5 Wahana Unggulan</h2>
-      <p>Setiap zona dirancang khusus menyerupai habitat asli untuk memberikan pengalaman edukasi yang mendalam.</p>
+      <p>Pengalaman edukatif ramah keluarga di habitat satwa yang disesuaikan dengan lingkungan aslinya.</p>
     </div>
 
     <div class="wahana-grid">
@@ -595,13 +690,12 @@
       <!-- 1. Taman Burung -->
       <div class="wahana-card">
         <div class="card-image-wrapper">
-          <!-- Foto Burung Makau / Avian yang Akurat -->
           <img src="https://images.unsplash.com/photo-1552728089-57bdde30beb3?auto=format&fit=crop&w=800&q=80" alt="Taman Burung">
           <span class="card-badge">Avian Aviary Dome</span>
         </div>
         <div class="card-body">
           <h3><i class="fa-solid fa-crow" style="color:#2d6a4f;"></i> Taman Burung</h3>
-          <p>Kubah aviary raksasa tempat ribuan burung eksotis terbang bebas di atas lanskap tropis yang indah.</p>
+          <p>Kubah aviary raksasa tempat ribuan burung eksotis terbang bebas di atas lanskap hijau tropis.</p>
           <ul class="card-features">
             <li><i class="fa-solid fa-check-circle"></i> Feeding Show Interaktif</li>
             <li><i class="fa-solid fa-check-circle"></i> Ratusan Burung Endemik</li>
@@ -610,16 +704,15 @@
         </div>
       </div>
 
-      <!-- 2. Museum Komodo & Reptil -->
+      <!-- 2. Museum Komodo -->
       <div class="wahana-card">
         <div class="card-image-wrapper">
-          <!-- Foto Komodo / Reptil Purba yang Akurat -->
           <img src="https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=800&q=80" alt="Komodo Dragon">
           <span class="card-badge">Prehistoric Realm</span>
         </div>
         <div class="card-body">
           <h3><i class="fa-solid fa-dragon" style="color:#e76f51;"></i> Museum Komodo</h3>
-          <p>Jelajahi keagungan Komodo sebagai predator purba beserta koleksi herpetologi dan reptil Nusantara.</p>
+          <p>Melihat dari dekat naga purba Komodo dan ragam herpetologi endemik Indonesia.</p>
           <ul class="card-features">
             <li><i class="fa-solid fa-check-circle"></i> Area Komodo Raksasa</li>
             <li><i class="fa-solid fa-check-circle"></i> Diorama Digital Interaktif</li>
@@ -631,13 +724,12 @@
       <!-- 3. Dunia Air Tawar -->
       <div class="wahana-card">
         <div class="card-image-wrapper">
-          <!-- Foto Ikan Air Tawar / Arwana yang Akurat -->
           <img src="https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80" alt="Dunia Air Tawar">
           <span class="card-badge">Aquatic Ecosystem</span>
         </div>
         <div class="card-body">
           <h3><i class="fa-solid fa-fish" style="color:#0077b6;"></i> Dunia Air Tawar</h3>
-          <p>Taman akuarium air tawar terbesar yang menampilkan keanekaragaman ekosistem sungai dan danau.</p>
+          <p>Akuarium air tawar raksasa yang menampilkan keanekaragaman biota sungai dan danau Nusantara.</p>
           <ul class="card-features">
             <li><i class="fa-solid fa-check-circle"></i> Touch Pool Anak</li>
             <li><i class="fa-solid fa-check-circle"></i> Koleksi Ikan Purba Arwana</li>
@@ -649,13 +741,12 @@
       <!-- 4. Dunia Serangga -->
       <div class="wahana-card">
         <div class="card-image-wrapper">
-          <!-- Foto Kupu-Kupu / Serangga yang Akurat -->
           <img src="https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&w=800&q=80" alt="Dunia Serangga">
           <span class="card-badge">Micro World</span>
         </div>
         <div class="card-body">
           <h3><i class="fa-solid fa-bug" style="color:#e9c46a;"></i> Dunia Serangga</h3>
-          <p>Keajaiban dunia mikro melalui taman kupu-kupu terbuka dan koleksi insetarium terlengkap.</p>
+          <p>Keajaiban dunia mikro lewat taman kupu-kupu terbuka dan ruang edukasi metamorfosis.</p>
           <ul class="card-features">
             <li><i class="fa-solid fa-check-circle"></i> Butterfly Open Garden</li>
             <li><i class="fa-solid fa-check-circle"></i> Edukasi Metamorfosis</li>
@@ -667,16 +758,15 @@
       <!-- 5. Farm House -->
       <div class="wahana-card">
         <div class="card-image-wrapper">
-          <!-- Foto Hewan Ternak Lucu (Domba/Kelinci) yang Akurat -->
           <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=800&q=80" alt="Farm House">
           <span class="card-badge">Petting Zoo</span>
         </div>
         <div class="card-body">
           <h3><i class="fa-solid fa-cow" style="color:#6b705c;"></i> Farm House</h3>
-          <p>Area peternakan edukatif di mana si kecil dapat berinteraksi dan memberi makan domba mini serta kelinci.</p>
+          <p>Area peternakan edukatif ramah anak untuk bermain dan memberi pakan kelinci serta domba mini.</p>
           <ul class="card-features">
             <li><i class="fa-solid fa-check-circle"></i> Petting Zoo Ramah Anak</li>
-            <li><i class="fa-solid fa-check-circle"></i> Area Foto Pedesaan</li>
+            <li><i class="fa-solid fa-check-circle"></i> Spot Foto Pedesaan</li>
           </ul>
           <a href="#" class="btn-card">Detail Wahana</a>
         </div>
@@ -686,7 +776,83 @@
   </section>
 
   <!-- ==========================================
-       INDUSTRIAL FOOTER
+       7. KONSERVASI & EDUKASI SECTION
+       ========================================== -->
+  <section class="section-konservasi" id="konservasi">
+    <div class="konservasi-container">
+      <div class="konservasi-text">
+        <h2>Komitmen Konservasi Alam</h2>
+        <p>Jagat Satwa Nusantara bukan sekadar tempat wisata, melainkan pusat rehabilitasi, penangkaran, dan pelestarian satwa langka terpadu di Indonesia.</p>
+        
+        <ul class="konservasi-list">
+          <li>
+            <i class="fa-solid fa-seedling"></i>
+            <div>
+              <h4>Program Penangkaran & Pelestarian</h4>
+              <p>Mendukung pembiakan spesies terancam punah seperti Komodo dan Burung Jalak Bali.</p>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-graduation-cap"></i>
+            <div>
+              <h4>Edukasi "Junior Ranger"</h4>
+              <p>Program pembelajaran khusus anak-anak sekolah untuk mengenal pentingnya menjaga ekosistem.</p>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-heart-pulse"></i>
+            <div>
+              <h4>Pusat Kesehatan Satwa</h4>
+              <p>Fasilitas medis veteriner modern dengan tim dokter hewan berpengalaman 24/7.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="konservasi-media">
+        <img src="https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=800&q=80" alt="Konservasi Satwa">
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       8. FASILITAS PENGUNJUNG SECTION
+       ========================================== -->
+  <section class="section-fasilitas" id="fasilitas">
+    <div class="section-header">
+      <h2>Fasilitas Modern & Nyaman</h2>
+      <p>Dirancang untuk memberikan kenyamanan maksimal bagi seluruh anggota keluarga Anda.</p>
+    </div>
+
+    <div class="fasilitas-grid">
+      <div class="fasilitas-card">
+        <i class="fa-solid fa-utensils"></i>
+        <h3>Culinary Area</h3>
+        <p>Restoran & food court ramah keluarga dengan konsep ruang terbuka hijau.</p>
+      </div>
+
+      <div class="fasilitas-card">
+        <i class="fa-solid fa-wheelchair"></i>
+        <h3>Akses Ramah Difabel</h3>
+        <p>Jalur khusus stroller dan kursi roda di seluruh area 5 wahana utama.</p>
+      </div>
+
+      <div class="fasilitas-card">
+        <i class="fa-solid fa-baby"></i>
+        <h3>Nursery Room</h3>
+        <p>Ruang laktasi dan perawatan bayi yang bersih, tenang, dan ber-AC.</p>
+      </div>
+
+      <div class="fasilitas-card">
+        <i class="fa-solid fa-bus"></i>
+        <h3>Eco Shuttle Bus</h3>
+        <p>Layanan transportasi listrik ramah lingkungan gratis antar-wahana.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       9. INDUSTRIAL FOOTER
        ========================================== -->
   <footer>
     <div class="footer-grid">
@@ -699,7 +865,8 @@
         <ul>
           <li><a href="#home">Beranda</a></li>
           <li><a href="#wahana">5 Wahana</a></li>
-          <li><a href="#tiket">Pembelian Tiket</a></li>
+          <li><a href="#konservasi">Konservasi</a></li>
+          <li><a href="#fasilitas">Fasilitas</a></li>
         </ul>
       </div>
       <div class="footer-contact">
@@ -710,9 +877,9 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Jagat Satwa Nusantara - PT Hijau Flora Indonesia. All Rights Reserved.</p>
+      <p>&copy; 2026 Jagat Satwa Nusantara. All Rights Reserved.</p>
     </div>
   </footer>
 
 </body>
-</html>
+</html> 
