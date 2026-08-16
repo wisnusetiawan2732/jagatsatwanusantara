@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Jagat Satwa Nusantara - Destinasi Wisata Satwa Edukatif & Konservasi Terpadu TMII Jakarta">
-  <title>Jagat Satwa Nusantara | Enterprise Web Portal</title>
+  <meta name="description" content="Jagat Satwa Nusantara - Portal Resmi Wahana Satwa, Edukasi, & Konservasi Terpadu TMII Jakarta">
+  <title>Jagat Satwa Nusantara | Official Enterprise Web Portal</title>
   
   <!-- External Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,10 +23,10 @@
       --accent-hover: #f4a261;
       --dark: #081c15;
       --light: #f8f9fa;
-      --glass-bg: rgba(8, 28, 21, 0.75);
+      --glass-bg: rgba(8, 28, 21, 0.82);
       --glass-border: rgba(255, 255, 255, 0.15);
-      --card-bg: rgba(255, 255, 255, 0.95);
-      --transition-base: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --card-bg: rgba(255, 255, 255, 0.96);
+      --transition-base: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     * {
@@ -48,7 +48,7 @@
     }
 
     /* ==========================================
-       2. BACKGROUND VIDEO OVERLAY SYSTEM
+       2. HYBRID VIDEO BACKGROUND SYSTEM
        ========================================== */
     .video-background-container {
       position: fixed;
@@ -58,13 +58,27 @@
       height: 100vh;
       z-index: -2;
       overflow: hidden;
+      background: url('https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
     }
 
-    .video-background-container video {
-      width: 100%;
-      height: 100%;
+    .video-background-container video,
+    .video-background-container iframe {
+      width: 100vw;
+      height: 100vh;
       object-fit: cover;
       filter: brightness(0.55) contrast(1.1);
+      pointer-events: none;
+    }
+
+    /* Iframe sizing for YouTube Background */
+    .video-background-container iframe {
+      height: 56.25vw;
+      min-height: 100vh;
+      min-width: 177.77vh;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
 
     .video-overlay {
@@ -73,8 +87,47 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: radial-gradient(circle, rgba(8,28,21,0.3) 0%, rgba(8,28,21,0.85) 100%);
+      background: radial-gradient(circle, rgba(8,28,21,0.2) 0%, rgba(8,28,21,0.85) 100%);
       z-index: -1;
+    }
+
+    /* Floating Controller Bar */
+    .video-controls {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      padding: 8px 18px;
+      border-radius: 50px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+    .video-btn {
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: var(--transition-base);
+    }
+
+    .video-btn:hover {
+      color: #fff;
+      transform: scale(1.15);
+    }
+
+    .video-tagline {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.8);
+      font-weight: 600;
+      border-left: 1px solid rgba(255,255,255,0.2);
+      padding-left: 10px;
     }
 
     /* ==========================================
@@ -85,16 +138,14 @@
       top: 0;
       left: 0;
       width: 100%;
-      padding: 1.25rem 6%;
+      padding: 1.1rem 6%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 1000;
       background: var(--glass-bg);
       backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--glass-border);
-      transition: var(--transition-base);
     }
 
     .nav-brand {
@@ -119,7 +170,7 @@
     .nav-menu {
       display: flex;
       list-style: none;
-      gap: 2.5rem;
+      gap: 2rem;
       align-items: center;
     }
 
@@ -127,9 +178,8 @@
       text-decoration: none;
       color: rgba(255, 255, 255, 0.85);
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       transition: var(--transition-base);
-      position: relative;
     }
 
     .nav-link:hover {
@@ -139,15 +189,10 @@
     .btn-ticket-nav {
       background: linear-gradient(135deg, var(--accent), var(--accent-hover));
       color: var(--dark) !important;
-      padding: 0.75rem 1.8rem;
+      padding: 0.65rem 1.6rem;
       border-radius: 50px;
       font-weight: 700 !important;
       box-shadow: 0 4px 15px rgba(233, 196, 106, 0.3);
-    }
-
-    .btn-ticket-nav:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(233, 196, 106, 0.5);
     }
 
     /* ==========================================
@@ -164,7 +209,7 @@
     }
 
     .hero-content {
-      max-width: 900px;
+      max-width: 950px;
     }
 
     .badge-hero {
@@ -172,7 +217,7 @@
       align-items: center;
       gap: 0.5rem;
       padding: 0.5rem 1.25rem;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.12);
       border: 1px solid var(--glass-border);
       border-radius: 50px;
       backdrop-filter: blur(10px);
@@ -194,7 +239,7 @@
       font-size: 1.2rem;
       color: rgba(255, 255, 255, 0.9);
       margin-bottom: 2.5rem;
-      max-width: 750px;
+      max-width: 800px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -204,6 +249,7 @@
       gap: 1.5rem;
       justify-content: center;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     .btn-primary {
@@ -235,7 +281,7 @@
     }
 
     /* ==========================================
-       5. METRICS & QUICK INFO SECTION
+       5. METRICS SECTION
        ========================================== */
     .metrics-container {
       max-width: 1200px;
@@ -273,27 +319,17 @@
       margin-bottom: 0.75rem;
     }
 
-    .metric-item h4 {
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-
-    .metric-item p {
-      font-size: 0.875rem;
-      color: rgba(255,255,255,0.7);
-    }
-
     /* ==========================================
        6. WAHANA SECTION & ACCURATE CARDS
        ========================================== */
-    .section-wahana {
+    .section-padding {
       padding: 6rem 6%;
       position: relative;
     }
 
     .section-header {
       text-align: center;
-      max-width: 700px;
+      max-width: 750px;
       margin: 0 auto 4rem auto;
       color: #fff;
     }
@@ -327,7 +363,7 @@
     }
 
     .wahana-card:hover {
-      transform: translateY(-12px);
+      transform: translateY(-10px);
       box-shadow: 0 25px 50px rgba(0,0,0,0.4);
     }
 
@@ -373,9 +409,6 @@
       font-size: 1.5rem;
       color: var(--dark);
       margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
     }
 
     .card-body p {
@@ -417,87 +450,116 @@
       transition: var(--transition-base);
     }
 
-    .btn-card:hover {
-      background: var(--primary-light);
-    }
-
     /* ==========================================
-       7. KONSERVASI SECTION
+       7. FEEDING SHOW SCHEDULE (ENTERPRISE)
        ========================================== */
-    .section-konservasi {
-      padding: 6rem 6%;
-      background: rgba(8, 28, 21, 0.6);
+    .schedule-section {
+      background: var(--glass-bg);
       backdrop-filter: blur(15px);
       border-top: 1px solid var(--glass-border);
       border-bottom: 1px solid var(--glass-border);
       color: #fff;
     }
 
-    .konservasi-container {
-      max-width: 1300px;
+    .table-container {
+      max-width: 1100px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .konservasi-text h2 {
-      font-size: 3rem;
-      margin-bottom: 1.5rem;
-      color: var(--accent);
-    }
-
-    .konservasi-text p {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 2rem;
-    }
-
-    .konservasi-list {
-      list-style: none;
-    }
-
-    .konservasi-list li {
-      margin-bottom: 1.25rem;
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-
-    .konservasi-list i {
-      font-size: 1.5rem;
-      color: var(--accent);
-      background: rgba(233, 196, 106, 0.15);
-      padding: 0.75rem;
-      border-radius: 12px;
-    }
-
-    .konservasi-list h4 {
-      font-size: 1.15rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .konservasi-list p {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.7);
-      margin: 0;
-    }
-
-    .konservasi-media img {
-      width: 100%;
-      border-radius: 24px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      overflow-x: auto;
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
       border: 1px solid var(--glass-border);
+      padding: 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 1.2rem 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    th {
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    td {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .badge-time {
+      background: var(--primary-light);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.85rem;
     }
 
     /* ==========================================
-       8. FASILITAS SECTION
+       8. PRICING & OPERATIONAL INFO
        ========================================== */
-    .section-fasilitas {
-      padding: 6rem 6%;
+    .ticket-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
+    .ticket-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    .ticket-card.popular {
+      border: 3px solid var(--accent);
+      transform: scale(1.03);
+    }
+
+    .popular-tag {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: var(--dark);
+      padding: 0.3rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .ticket-card h3 {
+      font-size: 1.6rem;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .price {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 1rem 0;
+    }
+
+    .price span {
+      font-size: 0.9rem;
+      color: #666;
+      font-weight: 400;
+    }
+
+    /* ==========================================
+       9. FASILITAS PENGUNJUNG
+       ========================================== */
     .fasilitas-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -514,13 +576,6 @@
       border-radius: 20px;
       color: #fff;
       text-align: center;
-      transition: var(--transition-base);
-    }
-
-    .fasilitas-card:hover {
-      transform: translateY(-8px);
-      background: rgba(8, 28, 21, 0.85);
-      border-color: var(--accent);
     }
 
     .fasilitas-card i {
@@ -529,18 +584,34 @@
       margin-bottom: 1.25rem;
     }
 
-    .fasilitas-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.75rem;
+    /* FAQ Section */
+    .faq-container {
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-    .fasilitas-card p {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.7);
+    .faq-item {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      margin-bottom: 1rem;
+      padding: 1.5rem;
+      color: #fff;
+    }
+
+    .faq-item h4 {
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-item p {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.95rem;
     }
 
     /* ==========================================
-       9. INDUSTRIAL FOOTER
+       10. INDUSTRIAL FOOTER
        ========================================== */
     footer {
       background: var(--dark);
@@ -563,30 +634,6 @@
       margin-bottom: 1rem;
     }
 
-    .footer-links h4, .footer-contact h4 {
-      color: #fff;
-      font-size: 1.2rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .footer-links ul {
-      list-style: none;
-    }
-
-    .footer-links ul li {
-      margin-bottom: 0.75rem;
-    }
-
-    .footer-links ul li a {
-      color: rgba(255,255,255,0.7);
-      text-decoration: none;
-      transition: var(--transition-base);
-    }
-
-    .footer-links ul li a:hover {
-      color: var(--accent);
-    }
-
     .footer-bottom {
       text-align: center;
       padding-top: 2rem;
@@ -596,7 +643,6 @@
 
     @media (max-width: 992px) {
       .hero h1 { font-size: 2.6rem; }
-      .konservasi-container { grid-template-columns: 1fr; }
       .nav-menu { display: none; }
     }
   </style>
@@ -604,15 +650,26 @@
 <body>
 
   <!-- ==========================================
-       BACKGROUND VIDEO OVERLAY (LOKAL & HANDAL)
+       HYBRID BACKGROUND VIDEO (AUTOPLAY PASTI BERJALAN)
        ========================================== -->
   <div class="video-background-container">
-    <!-- Video lokal terpercaya dengan autoplay tanpa hambatan -->
-    <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=1920&q=80">
-      <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
-    </video>
+    <!-- Video YouTube Embed Atraksi Satwa (Anti-CORS, Muted, & Loop Autoplay) -->
+    <iframe 
+      id="bgYoutube"
+      src="https://www.youtube.com/embed/5qap5aO4i9A?autoplay=1&mute=1&controls=0&loop=1&playlist=5qap5aO4i9A&showinfo=0&rel=0&enablejsapi=1" 
+      title="Background Animal Feeding" 
+      frameborder="0" 
+      allow="autoplay; encrypted-media" 
+      allowfullscreen>
+    </iframe>
   </div>
   <div class="video-overlay"></div>
+
+  <!-- Floating Video Widget Controller -->
+  <div class="video-controls">
+    <button class="video-btn" id="reloadVideoBtn" title="Muat Ulang Video"><i class="fa-solid fa-rotate-right"></i></button>
+    <span class="video-tagline"><i class="fa-solid fa-circle-play" style="color:#2ec4b6;"></i> Live Feeding Background</span>
+  </div>
 
   <!-- ==========================================
        NAVIGATION BAR
@@ -625,8 +682,10 @@
     <ul class="nav-menu">
       <li><a href="#home" class="nav-link">Beranda</a></li>
       <li><a href="#wahana" class="nav-link">5 Wahana</a></li>
-      <li><a href="#konservasi" class="nav-link">Konservasi</a></li>
+      <li><a href="#feeding" class="nav-link">Jadwal Feeding</a></li>
+      <li><a href="#tiket" class="nav-link">Harga Tiket</a></li>
       <li><a href="#fasilitas" class="nav-link">Fasilitas</a></li>
+      <li><a href="#faq" class="nav-link">FAQ</a></li>
       <li><a href="#tiket" class="nav-link btn-ticket-nav"><i class="fa-solid fa-ticket"></i> Beli Tiket</a></li>
     </ul>
   </nav>
@@ -637,13 +696,13 @@
   <section class="hero" id="home">
     <div class="hero-content">
       <div class="badge-hero">
-        <i class="fa-solid fa-shield-halved"></i> Konservasi & Edukasi Terpadu TMII
+        <i class="fa-solid fa-shield-halved"></i> Konservasi & Edukasi Terpadu TMII Jakarta
       </div>
-      <h1>Petualangan Satwa Interaktif Nusantara</h1>
-      <p>Jelajahi kekayaan flora dan fauna Indonesia melalui 5 wahana edukatif modern berstandar internasional.</p>
+      <h1>Petualangan Satwa Interaktif Terlengkap untuk Keluarga</h1>
+      <p>Saksikan langsung keseruan atraksi pemberian makan (*Animal Feeding Show*), interaksi satwa endemik, serta edutainment ramah anak di 5 wahana utama.</p>
       <div class="hero-actions">
         <a href="#wahana" class="btn-primary">Jelajahi 5 Wahana</a>
-        <a href="#tiket" class="btn-secondary">Jadwal & Tiket</a>
+        <a href="#feeding" class="btn-secondary"><i class="fa-solid fa-clock"></i> Jadwal Feeding Show</a>
       </div>
     </div>
   </section>
@@ -655,34 +714,34 @@
     <div class="metrics-grid">
       <div class="metric-item">
         <i class="fa-solid fa-paw"></i>
-        <h4>5 Zona Utama</h4>
-        <p>Taman Satwa Tematik</p>
+        <h4>5 Wahana</h4>
+        <p>Zona Satwa Tematik</p>
       </div>
       <div class="metric-item">
-        <i class="fa-solid fa-dove"></i>
-        <h4>300+ Spesies</h4>
-        <p>Satwa Endemik Dilindungi</p>
+        <i class="fa-solid fa-apple-whole"></i>
+        <h4>12 Show/Hari</h4>
+        <p>Live Animal Feeding</p>
       </div>
       <div class="metric-item">
         <i class="fa-solid fa-tree"></i>
         <h4>12 Hektar</h4>
-        <p>Area Alam Hijau Modern</p>
+        <p>Area Alam Hijau TMII</p>
       </div>
       <div class="metric-item">
-        <i class="fa-solid fa-users"></i>
+        <i class="fa-solid fa-child-reaching"></i>
         <h4>100% Safe</h4>
-        <p>Ramah Keluarga & Anak</p>
+        <p>Edukasi Ramah Anak</p>
       </div>
     </div>
   </div>
 
   <!-- ==========================================
-       5 WAHANA UTAMA (FOTO SESUAI)
+       5 WAHANA UTAMA (FOTO ACCURATE)
        ========================================== -->
-  <section class="section-wahana" id="wahana">
+  <section class="section-padding" id="wahana">
     <div class="section-header">
       <h2>5 Wahana Unggulan</h2>
-      <p>Pengalaman edukatif ramah keluarga di habitat satwa yang disesuaikan dengan lingkungan aslinya.</p>
+      <p>Setiap zona dirancang mirip dengan ekosistem asli untuk kenyamanan satwa dan pengalaman edukasi interaktif.</p>
     </div>
 
     <div class="wahana-grid">
@@ -694,13 +753,13 @@
           <span class="card-badge">Avian Aviary Dome</span>
         </div>
         <div class="card-body">
-          <h3><i class="fa-solid fa-crow" style="color:#2d6a4f;"></i> Taman Burung</h3>
-          <p>Kubah aviary raksasa tempat ribuan burung eksotis terbang bebas di atas lanskap hijau tropis.</p>
+          <h3>Taman Burung</h3>
+          <p>Kubah aviary raksasa tempat ribuan burung eksotis terbang bebas. Menyediakan area interaksi burung pelikan dan macau.</p>
           <ul class="card-features">
-            <li><i class="fa-solid fa-check-circle"></i> Feeding Show Interaktif</li>
-            <li><i class="fa-solid fa-check-circle"></i> Ratusan Burung Endemik</li>
+            <li><i class="fa-solid fa-check"></i> Free Flight Aviary</li>
+            <li><i class="fa-solid fa-check"></i> Feeding Pelikan & Macau</li>
           </ul>
-          <a href="#" class="btn-card">Detail Wahana</a>
+          <a href="#feeding" class="btn-card">Cek Jadwal Show</a>
         </div>
       </div>
 
@@ -711,13 +770,13 @@
           <span class="card-badge">Prehistoric Realm</span>
         </div>
         <div class="card-body">
-          <h3><i class="fa-solid fa-dragon" style="color:#e76f51;"></i> Museum Komodo</h3>
-          <p>Melihat dari dekat naga purba Komodo dan ragam herpetologi endemik Indonesia.</p>
+          <h3>Museum Komodo</h3>
+          <p>Melihat naga purba Komodo secara langsung serta koleksi edukasi herpetologi dan reptil langka Nusantara.</p>
           <ul class="card-features">
-            <li><i class="fa-solid fa-check-circle"></i> Area Komodo Raksasa</li>
-            <li><i class="fa-solid fa-check-circle"></i> Diorama Digital Interaktif</li>
+            <li><i class="fa-solid fa-check"></i> Area Komodo Raksasa</li>
+            <li><i class="fa-solid fa-check"></i> Edukasi Reptil Safe Zone</li>
           </ul>
-          <a href="#" class="btn-card">Detail Wahana</a>
+          <a href="#feeding" class="btn-card">Cek Jadwal Show</a>
         </div>
       </div>
 
@@ -728,13 +787,13 @@
           <span class="card-badge">Aquatic Ecosystem</span>
         </div>
         <div class="card-body">
-          <h3><i class="fa-solid fa-fish" style="color:#0077b6;"></i> Dunia Air Tawar</h3>
-          <p>Akuarium air tawar raksasa yang menampilkan keanekaragaman biota sungai dan danau Nusantara.</p>
+          <h3>Dunia Air Tawar</h3>
+          <p>Taman akuarium air tawar raksasa yang menampilkan spesies eksotis seperti Ikan Arwana, Arapaima, dan Ikan Sumpit.</p>
           <ul class="card-features">
-            <li><i class="fa-solid fa-check-circle"></i> Touch Pool Anak</li>
-            <li><i class="fa-solid fa-check-circle"></i> Koleksi Ikan Purba Arwana</li>
+            <li><i class="fa-solid fa-check"></i> Touch Pool Anak</li>
+            <li><i class="fa-solid fa-check"></i> Live Feeding Arapaima</li>
           </ul>
-          <a href="#" class="btn-card">Detail Wahana</a>
+          <a href="#feeding" class="btn-card">Cek Jadwal Show</a>
         </div>
       </div>
 
@@ -745,13 +804,13 @@
           <span class="card-badge">Micro World</span>
         </div>
         <div class="card-body">
-          <h3><i class="fa-solid fa-bug" style="color:#e9c46a;"></i> Dunia Serangga</h3>
-          <p>Keajaiban dunia mikro lewat taman kupu-kupu terbuka dan ruang edukasi metamorfosis.</p>
+          <h3>Dunia Serangga</h3>
+          <p>Keajaiban dunia mikro lewat taman kupu-kupu terbuka, laboratorium metamorfosis, dan insetarium terlengkap.</p>
           <ul class="card-features">
-            <li><i class="fa-solid fa-check-circle"></i> Butterfly Open Garden</li>
-            <li><i class="fa-solid fa-check-circle"></i> Edukasi Metamorfosis</li>
+            <li><i class="fa-solid fa-check"></i> Butterfly Open Garden</li>
+            <li><i class="fa-solid fa-check"></i> Lab Metamorfosis Anak</li>
           </ul>
-          <a href="#" class="btn-card">Detail Wahana</a>
+          <a href="#feeding" class="btn-card">Cek Jadwal Show</a>
         </div>
       </div>
 
@@ -762,13 +821,13 @@
           <span class="card-badge">Petting Zoo</span>
         </div>
         <div class="card-body">
-          <h3><i class="fa-solid fa-cow" style="color:#6b705c;"></i> Farm House</h3>
-          <p>Area peternakan edukatif ramah anak untuk bermain dan memberi pakan kelinci serta domba mini.</p>
+          <h3>Farm House</h3>
+          <p>Area favorit anak-anak untuk berinteraksi langsung, memberi susu kelinci, dan memberi makan domba merino.</p>
           <ul class="card-features">
-            <li><i class="fa-solid fa-check-circle"></i> Petting Zoo Ramah Anak</li>
-            <li><i class="fa-solid fa-check-circle"></i> Spot Foto Pedesaan</li>
+            <li><i class="fa-solid fa-check"></i> Petting Zoo Interaktif</li>
+            <li><i class="fa-solid fa-check"></i> Memberi Makan Kelinci</li>
           </ul>
-          <a href="#" class="btn-card">Detail Wahana</a>
+          <a href="#feeding" class="btn-card">Cek Jadwal Show</a>
         </div>
       </div>
 
@@ -776,97 +835,175 @@
   </section>
 
   <!-- ==========================================
-       7. KONSERVASI & EDUKASI SECTION
+       7. JADWAL DAILY ANIMAL FEEDING SHOW
        ========================================== -->
-  <section class="section-konservasi" id="konservasi">
-    <div class="konservasi-container">
-      <div class="konservasi-text">
-        <h2>Komitmen Konservasi Alam</h2>
-        <p>Jagat Satwa Nusantara bukan sekadar tempat wisata, melainkan pusat rehabilitasi, penangkaran, dan pelestarian satwa langka terpadu di Indonesia.</p>
-        
-        <ul class="konservasi-list">
-          <li>
-            <i class="fa-solid fa-seedling"></i>
-            <div>
-              <h4>Program Penangkaran & Pelestarian</h4>
-              <p>Mendukung pembiakan spesies terancam punah seperti Komodo dan Burung Jalak Bali.</p>
-            </div>
-          </li>
-          <li>
-            <i class="fa-solid fa-graduation-cap"></i>
-            <div>
-              <h4>Edukasi "Junior Ranger"</h4>
-              <p>Program pembelajaran khusus anak-anak sekolah untuk mengenal pentingnya menjaga ekosistem.</p>
-            </div>
-          </li>
-          <li>
-            <i class="fa-solid fa-heart-pulse"></i>
-            <div>
-              <h4>Pusat Kesehatan Satwa</h4>
-              <p>Fasilitas medis veteriner modern dengan tim dokter hewan berpengalaman 24/7.</p>
-            </div>
-          </li>
+  <section class="section-padding schedule-section" id="feeding">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-fish-fins" style="color:var(--accent);"></i> Jadwal Live Feeding Show</h2>
+      <p>Saksikan atraksi menarik saat para ranger memberi makan hewan secara langsung setiap harinya!</p>
+    </div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Waktu</th>
+            <th>Atraksi Satwa</th>
+            <th>Wahana</th>
+            <th>Aktivitas Interaktif</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge-time">09:30 WIB</span></td>
+            <td><strong>Feeding Burung Pelikan</strong></td>
+            <td>Taman Burung</td>
+            <td>Foto Bersama & Lempar Ikan</td>
+          </tr>
+          <tr>
+            <td><span class="badge-time">10:30 WIB</span></td>
+            <td><strong>Feeding Arapaima Raksasa</strong></td>
+            <td>Dunia Air Tawar</td>
+            <td>Atraksi Makan Ikan Purba</td>
+          </tr>
+          <tr>
+            <td><span class="badge-time">11:15 WIB</span></td>
+            <td><strong>Feeding & Edukasi Komodo</strong></td>
+            <td>Museum Komodo</td>
+            <td>Edukasi Ranger Pro</td>
+          </tr>
+          <tr>
+            <td><span class="badge-time">13:30 WIB</span></td>
+            <td><strong>Pelepasan Kupu-Kupu</strong></td>
+            <td>Dunia Serangga</td>
+            <td>Interaksi Anak & Kupu-kupu</td>
+          </tr>
+          <tr>
+            <td><span class="badge-time">14:30 WIB</span></td>
+            <td><strong>Fun Feeding Domba & Kelinci</strong></td>
+            <td>Farm House</td>
+            <td>Memberi Wortel & Susu</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       8. HARGA TIKET & OPERASIONAL
+       ========================================== -->
+  <section class="section-padding" id="tiket">
+    <div class="section-header">
+      <h2>Informasi Tiket & Jam Buka</h2>
+      <p>Buka Setiap Hari: <strong>08:00 - 17:00 WIB</strong> (Termasuk Libur Nasional)</p>
+    </div>
+
+    <div class="ticket-grid">
+      <!-- Tiket Single -->
+      <div class="ticket-card">
+        <h3>Tiket Satuan</h3>
+        <p>Akses ke 1 Wahana pilihan Anda</p>
+        <div class="price">Rp 35.000 <span>/ Orang</span></div>
+        <ul style="list-style:none; text-align:left; margin-bottom:1.5rem; font-size:0.9rem; color:#555;">
+          <li><i class="fa-solid fa-check" style="color:var(--primary);"></i> Bebas pilih 1 wahana</li>
+          <li><i class="fa-solid fa-check" style="color:var(--primary);"></i> Akses ke Feeding Show Wahana</li>
         </ul>
+        <a href="#" class="btn-card" style="display:block;">Beli Online</a>
       </div>
 
-      <div class="konservasi-media">
-        <img src="https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=800&q=80" alt="Konservasi Satwa">
+      <!-- Tiket Pass Terusan -->
+      <div class="ticket-card popular">
+        <div class="popular-tag">PALING HEMAT</div>
+        <h3>Pass Terusan 5 Wahana</h3>
+        <p>Akses penuh ke SELURUH 5 Wahana Utama</p>
+        <div class="price">Rp 95.000 <span>/ Orang</span></div>
+        <ul style="list-style:none; text-align:left; margin-bottom:1.5rem; font-size:0.9rem; color:#555;">
+          <li><i class="fa-solid fa-check" style="color:var(--primary);"></i> Akses 5 Wahana Tanpa Batas</li>
+          <li><i class="fa-solid fa-check" style="color:var(--primary);"></i> Gratis Akses Shuttle Bus</li>
+          <li><i class="fa-solid fa-check" style="color:var(--primary);"></i> Hemat hingga Rp 80.000</li>
+        </ul>
+        <a href="#" class="btn-primary" style="display:block; text-align:center;">Beli Pass Terusan</a>
       </div>
     </div>
   </section>
 
   <!-- ==========================================
-       8. FASILITAS PENGUNJUNG SECTION
+       9. FASILITAS PENGUNJUNG
        ========================================== -->
-  <section class="section-fasilitas" id="fasilitas">
+  <section class="section-padding" id="fasilitas">
     <div class="section-header">
-      <h2>Fasilitas Modern & Nyaman</h2>
-      <p>Dirancang untuk memberikan kenyamanan maksimal bagi seluruh anggota keluarga Anda.</p>
+      <h2>Fasilitas Pengunjung</h2>
+      <p>Kenyamanan keluarga Anda adalah prioritas utama kami.</p>
     </div>
 
     <div class="fasilitas-grid">
       <div class="fasilitas-card">
         <i class="fa-solid fa-utensils"></i>
-        <h3>Culinary Area</h3>
-        <p>Restoran & food court ramah keluarga dengan konsep ruang terbuka hijau.</p>
+        <h3>Food Court & Resto</h3>
+        <p>Pilihan kuliner lengkap bersertifikat halal dengan area duduk outdoor rindang.</p>
       </div>
 
       <div class="fasilitas-card">
         <i class="fa-solid fa-wheelchair"></i>
-        <h3>Akses Ramah Difabel</h3>
-        <p>Jalur khusus stroller dan kursi roda di seluruh area 5 wahana utama.</p>
+        <h3>Akses Stroller & Disabilitas</h3>
+        <p>Jalur ramah kursi roda dan stroller di seluruh area 5 wahana.</p>
       </div>
 
       <div class="fasilitas-card">
         <i class="fa-solid fa-baby"></i>
-        <h3>Nursery Room</h3>
-        <p>Ruang laktasi dan perawatan bayi yang bersih, tenang, dan ber-AC.</p>
+        <h3>Nursery Room AC</h3>
+        <p>Ruang laktasi dan tempat ganti popok bayi yang nyaman dan bersih.</p>
       </div>
 
       <div class="fasilitas-card">
         <i class="fa-solid fa-bus"></i>
         <h3>Eco Shuttle Bus</h3>
-        <p>Layanan transportasi listrik ramah lingkungan gratis antar-wahana.</p>
+        <p>Transportasi listrik ramah lingkungan gratis antar wahana.</p>
       </div>
     </div>
   </section>
 
   <!-- ==========================================
-       9. INDUSTRIAL FOOTER
+       10. FAQ SECTION
+       ========================================== -->
+  <section class="section-padding" id="faq">
+    <div class="section-header">
+      <h2>Pertanyaan Sering Diajukan (FAQ)</h2>
+      <p>Informasi penting sebelum kunjungan Anda ke Jagat Satwa Nusantara.</p>
+    </div>
+
+    <div class="faq-container">
+      <div class="faq-item">
+        <h4><i class="fa-solid fa-circle-question"></i> Apakah anak-anak dikenakan tiket masuk?</h4>
+        <p>Anak-anak dengan tinggi badan di atas 80 cm wajib memiliki tiket masuk secara penuh.</p>
+      </div>
+      <div class="faq-item">
+        <h4><i class="fa-solid fa-circle-question"></i> Bolehkan membawa makanan dari luar?</h4>
+        <p>Untuk menjaga kebersihan habitat satwa, makanan luar tidak diperkenankan dibawa masuk ke area dalam wahana. Tersedia area restoran di luar zona wahana.</p>
+      </div>
+      <div class="faq-item">
+        <h4><i class="fa-solid fa-circle-question"></i> Apakah pakan hewan dijual di lokasi?</h4>
+        <p>Ya! Pakan resmi yang aman bagi hewan (seperti wortel kelinci dan pakan ikan) dapat dibeli di loket wahana Farm House & Dunia Air Tawar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       11. INDUSTRIAL FOOTER
        ========================================== -->
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
         <h3><i class="fa-solid fa-leaf" style="color:var(--accent);"></i> Jagat Satwa</h3>
-        <p>Destinasi wahana satwa dan konservasi modern di kawasan Taman Mini Indonesia Indah (TMII), Jakarta.</p>
+        <p>Destinasi wahana satwa dan konservasi modern di kawasan Taman Mini Indonesia Indah (TMII), Jakarta East Java, Indonesia.</p>
       </div>
       <div class="footer-links">
         <h4>Navigasi</h4>
-        <ul>
-          <li><a href="#home">Beranda</a></li>
-          <li><a href="#wahana">5 Wahana</a></li>
-          <li><a href="#konservasi">Konservasi</a></li>
-          <li><a href="#fasilitas">Fasilitas</a></li>
+        <ul style="list-style:none;">
+          <li><a href="#home" style="color:rgba(255,255,255,0.7); text-decoration:none;">Beranda</a></li>
+          <li><a href="#wahana" style="color:rgba(255,255,255,0.7); text-decoration:none;">5 Wahana</a></li>
+          <li><a href="#feeding" style="color:rgba(255,255,255,0.7); text-decoration:none;">Jadwal Feeding</a></li>
+          <li><a href="#tiket" style="color:rgba(255,255,255,0.7); text-decoration:none;">Harga Tiket</a></li>
         </ul>
       </div>
       <div class="footer-contact">
@@ -880,6 +1017,18 @@
       <p>&copy; 2026 Jagat Satwa Nusantara. All Rights Reserved.</p>
     </div>
   </footer>
+
+  <!-- ==========================================
+       12. CONTROLLER SCRIPT
+       ========================================== -->
+  <script>
+    const reloadVideoBtn = document.getElementById('reloadVideoBtn');
+    const iframe = document.getElementById('bgYoutube');
+
+    reloadVideoBtn.addEventListener('click', () => {
+      iframe.src = iframe.src;
+    });
+  </script>
 
 </body>
 </html>
