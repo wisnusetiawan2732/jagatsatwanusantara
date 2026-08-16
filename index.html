@@ -58,7 +58,8 @@
       height: 100vh;
       z-index: -2;
       overflow: hidden;
-      background: url('https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      background: url('https://images.unsplash.com/photo-1549366021-9f761d450615?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      background-size: cover;
     }
 
     .video-background-container video,
@@ -66,7 +67,7 @@
       width: 100vw;
       height: 100vh;
       object-fit: cover;
-      filter: brightness(0.45) contrast(1.2) saturate(1.15);
+      filter: brightness(0.45) contrast(1.15) saturate(1.1);
       pointer-events: none;
     }
 
@@ -319,6 +320,10 @@
       margin-bottom: 0.75rem;
     }
 
+    .metric-item h4 {
+      font-size: 1.3rem;
+    }
+
     /* ==========================================
        6. WAHANA SECTION & ACCURATE CARDS
        ========================================== */
@@ -450,6 +455,11 @@
       transition: var(--transition-base);
     }
 
+    .btn-card:hover {
+      background: var(--primary-light);
+      transform: scale(1.02);
+    }
+
     /* ==========================================
        7. FEEDING SHOW SCHEDULE (ENTERPRISE)
        ========================================== */
@@ -576,6 +586,12 @@
       border-radius: 20px;
       color: #fff;
       text-align: center;
+      transition: var(--transition-base);
+    }
+
+    .fasilitas-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
     }
 
     .fasilitas-card i {
@@ -597,6 +613,11 @@
       margin-bottom: 1rem;
       padding: 1.5rem;
       color: #fff;
+      transition: var(--transition-base);
+    }
+
+    .faq-item:hover {
+      border-color: var(--accent);
     }
 
     .faq-item h4 {
@@ -634,6 +655,18 @@
       margin-bottom: 1rem;
     }
 
+    .footer-links ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links ul li a:hover {
+      color: var(--accent) !important;
+    }
+
+    .footer-contact p {
+      margin-bottom: 0.5rem;
+    }
+
     .footer-bottom {
       text-align: center;
       padding-top: 2rem;
@@ -641,9 +674,84 @@
       font-size: 0.875rem;
     }
 
+    /* ==========================================
+       11. RESPONSIVE DESIGN
+       ========================================== */
     @media (max-width: 992px) {
-      .hero h1 { font-size: 2.6rem; }
-      .nav-menu { display: none; }
+      .hero h1 { 
+        font-size: 2.6rem; 
+      }
+      .nav-menu { 
+        display: none; 
+      }
+      .section-header h2 {
+        font-size: 2.2rem;
+      }
+      .ticket-card.popular {
+        transform: scale(1);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 1.5rem;
+      }
+      .metric-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 1rem;
+      }
+      .metric-item:last-child {
+        border-bottom: none;
+      }
+      .section-padding {
+        padding: 4rem 5%;
+      }
+      .wahana-grid {
+        grid-template-columns: 1fr;
+      }
+      .ticket-grid {
+        grid-template-columns: 1fr;
+      }
+      .fasilitas-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .video-controls {
+        bottom: 15px;
+        right: 15px;
+        padding: 6px 14px;
+      }
+      .video-tagline {
+        font-size: 0.65rem;
+        padding-left: 8px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+      .fasilitas-grid {
+        grid-template-columns: 1fr;
+      }
+      .metrics-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+        padding: 1rem;
+      }
+      .metric-item i {
+        font-size: 1.5rem;
+      }
+      .metric-item h4 {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -651,7 +759,7 @@
 
   <!-- ==========================================
        HYBRID BACKGROUND VIDEO (AUTOPLAY PASTI BERJALAN)
-       HD VIDEO SATWA - KOMPILASI TERBAIK
+       HD VIDEO SATWA - DENGAN FALLBACK IMAGE
        ========================================== -->
   <div class="video-background-container">
     <!-- Video YouTube HD Kompilasi Satwa Liar (Stabil & Teruji) -->
@@ -996,7 +1104,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <h3><i class="fa-solid fa-leaf" style="color:var(--accent);"></i> Jagat Satwa</h3>
-        <p>Destinasi wahana satwa dan konservasi modern di kawasan Taman Mini Indonesia Indah (TMII), Jakarta East Java, Indonesia.</p>
+        <p>Destinasi wahana satwa dan konservasi modern di kawasan Taman Mini Indonesia Indah (TMII), Jakarta Timur, Indonesia.</p>
       </div>
       <div class="footer-links">
         <h4>Navigasi</h4>
@@ -1023,11 +1131,24 @@
        12. CONTROLLER SCRIPT
        ========================================== -->
   <script>
+    // Reload Video Button
     const reloadVideoBtn = document.getElementById('reloadVideoBtn');
     const iframe = document.getElementById('bgYoutube');
 
-    reloadVideoBtn.addEventListener('click', () => {
-      iframe.src = iframe.src;
+    reloadVideoBtn.addEventListener('click', function() {
+      const src = iframe.src;
+      iframe.src = '';
+      setTimeout(() => {
+        iframe.src = src;
+      }, 100);
+    });
+
+    // Force video background to stay visible
+    window.addEventListener('load', function() {
+      const container = document.querySelector('.video-background-container');
+      if (container) {
+        container.style.display = 'block';
+      }
     });
   </script>
 
