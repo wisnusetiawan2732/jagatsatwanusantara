@@ -6,16 +6,12 @@
   <meta name="description" content="Jagat Satwa Nusantara - Portal Resmi Wahana Satwa, Edukasi, & Konservasi Terpadu TMII Jakarta">
   <title>Jagat Satwa Nusantara | Official Enterprise Web Portal</title>
   
-  <!-- External Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* ==========================================
-       1. CORE DESIGN SYSTEM & VARIABLES
-       ========================================== */
     :root {
       --primary: #1b4332;
       --primary-light: #2d6a4f;
@@ -29,11 +25,7 @@
       --transition-base: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -43,34 +35,27 @@
       line-height: 1.7;
     }
 
-    h1, h2, h3, h4, .brand-font {
-      font-family: 'Syne', sans-serif;
-    }
+    h1, h2, h3, h4, .brand-font { font-family: 'Syne', sans-serif; }
 
-    /* ==========================================
-       2. HYBRID VIDEO BACKGROUND SYSTEM
-       ========================================== */
-    .video-background-container {
+    /* ===== BACKGROUND IMAGE ===== */
+    .bg-container {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
       z-index: -2;
-      overflow: hidden;
       background: url('https://images.unsplash.com/photo-1549366021-9f761d450615?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
       background-size: cover;
+      animation: slowZoom 20s ease-in-out infinite alternate;
     }
 
-    .video-background-container video {
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      filter: brightness(0.45) contrast(1.15) saturate(1.1);
-      pointer-events: none;
+    @keyframes slowZoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.08); }
     }
 
-    .video-overlay {
+    .bg-overlay {
       position: fixed;
       top: 0;
       left: 0;
@@ -80,48 +65,6 @@
       z-index: -1;
     }
 
-    /* Floating Controller Bar */
-    .video-controls {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      z-index: 999;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      padding: 8px 18px;
-      border-radius: 50px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    }
-
-    .video-btn {
-      background: none;
-      border: none;
-      color: var(--accent);
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: var(--transition-base);
-    }
-
-    .video-btn:hover {
-      color: #fff;
-      transform: scale(1.15);
-    }
-
-    .video-tagline {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.8);
-      font-weight: 600;
-      border-left: 1px solid rgba(255,255,255,0.2);
-      padding-left: 10px;
-    }
-
-    /* ==========================================
-       3. ENTERPRISE NAVIGATION BAR
-       ========================================== */
     .navbar {
       position: fixed;
       top: 0;
@@ -145,16 +88,8 @@
       color: #fff;
     }
 
-    .nav-brand i {
-      font-size: 1.8rem;
-      color: var(--accent);
-    }
-
-    .nav-brand span {
-      font-size: 1.4rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-    }
+    .nav-brand i { font-size: 1.8rem; color: var(--accent); }
+    .nav-brand span { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; }
 
     .nav-menu {
       display: flex;
@@ -171,9 +106,7 @@
       transition: var(--transition-base);
     }
 
-    .nav-link:hover {
-      color: var(--accent);
-    }
+    .nav-link:hover { color: var(--accent); }
 
     .btn-ticket-nav {
       background: linear-gradient(135deg, var(--accent), var(--accent-hover));
@@ -184,9 +117,6 @@
       box-shadow: 0 4px 15px rgba(233, 196, 106, 0.3);
     }
 
-    /* ==========================================
-       4. HERO SECTION
-       ========================================== */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -197,9 +127,7 @@
       color: #fff;
     }
 
-    .hero-content {
-      max-width: 950px;
-    }
+    .hero-content { max-width: 950px; }
 
     .badge-hero {
       display: inline-flex;
@@ -269,9 +197,6 @@
       transition: var(--transition-base);
     }
 
-    /* ==========================================
-       5. METRICS SECTION
-       ========================================== */
     .metrics-container {
       max-width: 1200px;
       margin: -4rem auto 4rem auto;
@@ -298,32 +223,11 @@
       border-right: 1px solid rgba(255,255,255,0.1);
     }
 
-    .metric-item:last-child {
-      border-right: none;
-    }
+    .metric-item:last-child { border-right: none; }
+    .metric-item i { font-size: 2rem; color: var(--accent); margin-bottom: 0.75rem; }
+    .metric-item h4 { font-size: 1.3rem; }
 
-    .metric-item i {
-      font-size: 2rem;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
-    .metric-item h4 {
-      font-size: 1.3rem;
-    }
-
-    .metric-item p {
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-
-    /* ==========================================
-       6. WAHANA SECTION & ACCURATE CARDS
-       ========================================== */
-    .section-padding {
-      padding: 6rem 6%;
-      position: relative;
-    }
+    .section-padding { padding: 6rem 6%; position: relative; }
 
     .section-header {
       text-align: center;
@@ -332,15 +236,8 @@
       color: #fff;
     }
 
-    .section-header h2 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .section-header p {
-      color: rgba(255,255,255,0.8);
-      font-size: 1.1rem;
-    }
+    .section-header h2 { font-size: 3rem; margin-bottom: 1rem; }
+    .section-header p { color: rgba(255,255,255,0.8); font-size: 1.1rem; }
 
     .wahana-grid {
       display: grid;
@@ -378,9 +275,7 @@
       transition: transform 0.6s ease;
     }
 
-    .wahana-card:hover .card-image-wrapper img {
-      transform: scale(1.08);
-    }
+    .wahana-card:hover .card-image-wrapper img { transform: scale(1.08); }
 
     .card-badge {
       position: absolute;
@@ -396,25 +291,9 @@
       border: 1px solid var(--glass-border);
     }
 
-    .card-body {
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-
-    .card-body h3 {
-      font-size: 1.5rem;
-      color: var(--dark);
-      margin-bottom: 0.75rem;
-    }
-
-    .card-body p {
-      color: #555;
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-      flex-grow: 1;
-    }
+    .card-body { padding: 2rem; display: flex; flex-direction: column; flex-grow: 1; }
+    .card-body h3 { font-size: 1.5rem; color: var(--dark); margin-bottom: 0.75rem; }
+    .card-body p { color: #555; font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
 
     .card-features {
       list-style: none;
@@ -432,9 +311,7 @@
       gap: 0.5rem;
     }
 
-    .card-features li i {
-      color: var(--primary-light);
-    }
+    .card-features li i { color: var(--primary-light); }
 
     .btn-card {
       text-align: center;
@@ -448,14 +325,8 @@
       transition: var(--transition-base);
     }
 
-    .btn-card:hover {
-      background: var(--primary-light);
-      transform: scale(1.02);
-    }
+    .btn-card:hover { background: var(--primary-light); transform: scale(1.02); }
 
-    /* ==========================================
-       7. FEEDING SHOW SCHEDULE (ENTERPRISE)
-       ========================================== */
     .schedule-section {
       background: var(--glass-bg);
       backdrop-filter: blur(15px);
@@ -474,26 +345,10 @@
       padding: 1.5rem;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-    }
-
-    th, td {
-      padding: 1.2rem 1.5rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    th {
-      color: var(--accent);
-      font-size: 1.1rem;
-    }
-
-    td {
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.9);
-    }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th, td { padding: 1.2rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    th { color: var(--accent); font-size: 1.1rem; }
+    td { font-size: 0.95rem; color: rgba(255,255,255,0.9); }
 
     .badge-time {
       background: var(--primary-light);
@@ -503,9 +358,6 @@
       font-size: 0.85rem;
     }
 
-    /* ==========================================
-       8. PRICING & OPERATIONAL INFO
-       ========================================== */
     .ticket-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -541,32 +393,10 @@
       font-weight: 800;
     }
 
-    .ticket-card h3 {
-      font-size: 1.6rem;
-      color: var(--dark);
-      margin-bottom: 0.5rem;
-    }
+    .ticket-card h3 { font-size: 1.6rem; color: var(--dark); margin-bottom: 0.5rem; }
+    .price { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin: 1rem 0; }
+    .price span { font-size: 0.9rem; color: #666; font-weight: 400; }
 
-    .price {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--primary);
-      margin: 1rem 0;
-    }
-
-    .price span {
-      font-size: 0.9rem;
-      color: #666;
-      font-weight: 400;
-    }
-
-    .ticket-card ul li {
-      margin-bottom: 0.3rem;
-    }
-
-    /* ==========================================
-       9. FASILITAS PENGUNJUNG
-       ========================================== */
     .fasilitas-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -586,32 +416,10 @@
       transition: var(--transition-base);
     }
 
-    .fasilitas-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--accent);
-    }
+    .fasilitas-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+    .fasilitas-card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 1.25rem; }
 
-    .fasilitas-card i {
-      font-size: 2.5rem;
-      color: var(--accent);
-      margin-bottom: 1.25rem;
-    }
-
-    .fasilitas-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .fasilitas-card p {
-      font-size: 0.9rem;
-      opacity: 0.85;
-    }
-
-    /* FAQ Section */
-    .faq-container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
+    .faq-container { max-width: 900px; margin: 0 auto; }
 
     .faq-item {
       background: var(--glass-bg);
@@ -623,24 +431,10 @@
       transition: var(--transition-base);
     }
 
-    .faq-item:hover {
-      border-color: var(--accent);
-    }
+    .faq-item:hover { border-color: var(--accent); }
+    .faq-item h4 { color: var(--accent); font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .faq-item p { color: rgba(255,255,255,0.8); font-size: 0.95rem; }
 
-    .faq-item h4 {
-      color: var(--accent);
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .faq-item p {
-      color: rgba(255,255,255,0.8);
-      font-size: 0.95rem;
-    }
-
-    /* ==========================================
-       10. INDUSTRIAL FOOTER
-       ========================================== */
     footer {
       background: var(--dark);
       color: rgba(255, 255, 255, 0.7);
@@ -656,48 +450,10 @@
       margin: 0 auto 4rem auto;
     }
 
-    .footer-brand h3 {
-      color: #fff;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-
-    .footer-brand p {
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
-    .footer-links h4 {
-      color: #fff;
-      margin-bottom: 1rem;
-    }
-
-    .footer-links ul li {
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-links ul li a {
-      transition: var(--transition-base);
-    }
-
-    .footer-links ul li a:hover {
-      color: var(--accent) !important;
-    }
-
-    .footer-contact h4 {
-      color: #fff;
-      margin-bottom: 1rem;
-    }
-
-    .footer-contact p {
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
-    }
-
-    .footer-contact p i {
-      width: 1.5rem;
-      color: var(--accent);
-    }
+    .footer-brand h3 { color: #fff; font-size: 1.8rem; margin-bottom: 1rem; }
+    .footer-links ul li { margin-bottom: 0.5rem; }
+    .footer-links ul li a:hover { color: var(--accent) !important; }
+    .footer-contact p { margin-bottom: 0.5rem; }
 
     .footer-bottom {
       text-align: center;
@@ -706,126 +462,41 @@
       font-size: 0.875rem;
     }
 
-    /* ==========================================
-       11. RESPONSIVE DESIGN
-       ========================================== */
     @media (max-width: 992px) {
-      .hero h1 { 
-        font-size: 2.6rem; 
-      }
-      .nav-menu { 
-        display: none; 
-      }
-      .section-header h2 {
-        font-size: 2.2rem;
-      }
-      .ticket-card.popular {
-        transform: scale(1);
-      }
+      .hero h1 { font-size: 2.6rem; }
+      .nav-menu { display: none; }
+      .section-header h2 { font-size: 2.2rem; }
+      .ticket-card.popular { transform: scale(1); }
     }
 
     @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
-      .metrics-grid {
-        grid-template-columns: repeat(2, 1fr);
-        padding: 1.5rem;
-      }
-      .metric-item {
-        border-right: none;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-        padding-bottom: 1rem;
-      }
-      .metric-item:last-child {
-        border-bottom: none;
-      }
-      .section-padding {
-        padding: 4rem 5%;
-      }
-      .wahana-grid {
-        grid-template-columns: 1fr;
-      }
-      .ticket-grid {
-        grid-template-columns: 1fr;
-      }
-      .fasilitas-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      .video-controls {
-        bottom: 15px;
-        right: 15px;
-        padding: 6px 14px;
-      }
-      .video-tagline {
-        font-size: 0.65rem;
-        padding-left: 8px;
-      }
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); padding: 1.5rem; }
+      .metric-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem; }
+      .metric-item:last-child { border-bottom: none; }
+      .section-padding { padding: 4rem 5%; }
+      .wahana-grid { grid-template-columns: 1fr; }
+      .ticket-grid { grid-template-columns: 1fr; }
+      .fasilitas-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 1.6rem;
-      }
-      .fasilitas-grid {
-        grid-template-columns: 1fr;
-      }
-      .metrics-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 0.5rem;
-        padding: 1rem;
-      }
-      .metric-item i {
-        font-size: 1.5rem;
-      }
-      .metric-item h4 {
-        font-size: 1rem;
-      }
-      .metric-item p {
-        font-size: 0.75rem;
-      }
-      .section-header h2 {
-        font-size: 1.8rem;
-      }
+      .hero h1 { font-size: 1.6rem; }
+      .fasilitas-grid { grid-template-columns: 1fr; }
+      .metrics-grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; padding: 1rem; }
+      .metric-item i { font-size: 1.5rem; }
+      .metric-item h4 { font-size: 1rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ==========================================
-       BACKGROUND VIDEO - ROYALTY FREE DARI PIXABAY
-       ========================================== -->
-  <div class="video-background-container">
-    <!-- Video dari Pixabay - Royalty Free, Legal, Stabil -->
-    <video 
-      id="bgVideo"
-      autoplay 
-      muted 
-      loop 
-      playsinline
-      preload="auto"
-      poster="https://images.unsplash.com/photo-1549366021-9f761d450615?auto=format&fit=crop&w=1920&q=80">
-      <!-- Sumber video bebas hak cipta dari Pixabay via CDN -->
-      <source src="https://cdn.pixabay.com/video/2023/07/24/172570-848435716_large.mp4" type="video/mp4">
-      <source src="https://cdn.pixabay.com/video/2022/11/20/139606-776756087_large.mp4" type="video/mp4">
-      <!-- Fallback jika video gagal loading -->
-      Your browser does not support the video tag.
-    </video>
-  </div>
-  <div class="video-overlay"></div>
+  <!-- ===== BACKGROUND IMAGE ===== -->
+  <div class="bg-container"></div>
+  <div class="bg-overlay"></div>
 
-  <!-- Floating Video Controller -->
-  <div class="video-controls">
-    <button class="video-btn" id="reloadVideoBtn" title="Muat Ulang Video"><i class="fa-solid fa-rotate-right"></i></button>
-    <span class="video-tagline"><i class="fa-solid fa-circle-play" style="color:#2ec4b6;"></i> Royalty Free Wildlife</span>
-  </div>
-
-  <!-- ==========================================
-       NAVIGATION BAR
-       ========================================== -->
+  <!-- ===== NAVIGATION ===== -->
   <nav class="navbar">
     <a href="#" class="nav-brand">
       <i class="fa-solid fa-leaf"></i>
@@ -842,9 +513,7 @@
     </ul>
   </nav>
 
-  <!-- ==========================================
-       HERO SECTION
-       ========================================== -->
+  <!-- ===== HERO ===== -->
   <section class="hero" id="home">
     <div class="hero-content">
       <div class="badge-hero">
@@ -859,9 +528,7 @@
     </div>
   </section>
 
-  <!-- ==========================================
-       METRICS SECTION
-       ========================================== -->
+  <!-- ===== METRICS ===== -->
   <div class="metrics-container">
     <div class="metrics-grid">
       <div class="metric-item">
@@ -887,9 +554,7 @@
     </div>
   </div>
 
-  <!-- ==========================================
-       5 WAHANA UTAMA (FOTO ACCURATE)
-       ========================================== -->
+  <!-- ===== 5 WAHANA ===== -->
   <section class="section-padding" id="wahana">
     <div class="section-header">
       <h2>5 Wahana Unggulan</h2>
@@ -897,8 +562,6 @@
     </div>
 
     <div class="wahana-grid">
-
-      <!-- 1. Taman Burung -->
       <div class="wahana-card">
         <div class="card-image-wrapper">
           <img src="https://images.unsplash.com/photo-1552728089-57bdde30beb3?auto=format&fit=crop&w=800&q=80" alt="Taman Burung">
@@ -915,7 +578,6 @@
         </div>
       </div>
 
-      <!-- 2. Museum Komodo -->
       <div class="wahana-card">
         <div class="card-image-wrapper">
           <img src="https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=800&q=80" alt="Komodo Dragon">
@@ -932,7 +594,6 @@
         </div>
       </div>
 
-      <!-- 3. Dunia Air Tawar -->
       <div class="wahana-card">
         <div class="card-image-wrapper">
           <img src="https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80" alt="Dunia Air Tawar">
@@ -949,7 +610,6 @@
         </div>
       </div>
 
-      <!-- 4. Dunia Serangga -->
       <div class="wahana-card">
         <div class="card-image-wrapper">
           <img src="https://images.unsplash.com/photo-1535083783855-76ae62b2914e?auto=format&fit=crop&w=800&q=80" alt="Dunia Serangga">
@@ -966,7 +626,6 @@
         </div>
       </div>
 
-      <!-- 5. Farm House -->
       <div class="wahana-card">
         <div class="card-image-wrapper">
           <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=800&q=80" alt="Farm House">
@@ -982,13 +641,10 @@
           <a href="#feeding" class="btn-card">Cek Jadwal Show</a>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- ==========================================
-       7. JADWAL DAILY ANIMAL FEEDING SHOW
-       ========================================== -->
+  <!-- ===== JADWAL FEEDING ===== -->
   <section class="section-padding schedule-section" id="feeding">
     <div class="section-header">
       <h2><i class="fa-solid fa-fish-fins" style="color:var(--accent);"></i> Jadwal Live Feeding Show</h2>
@@ -1041,9 +697,7 @@
     </div>
   </section>
 
-  <!-- ==========================================
-       8. HARGA TIKET & OPERASIONAL
-       ========================================== -->
+  <!-- ===== TIKET ===== -->
   <section class="section-padding" id="tiket">
     <div class="section-header">
       <h2>Informasi Tiket & Jam Buka</h2>
@@ -1051,7 +705,6 @@
     </div>
 
     <div class="ticket-grid">
-      <!-- Tiket Single -->
       <div class="ticket-card">
         <h3>Tiket Satuan</h3>
         <p>Akses ke 1 Wahana pilihan Anda</p>
@@ -1063,7 +716,6 @@
         <a href="#" class="btn-card" style="display:block;">Beli Online</a>
       </div>
 
-      <!-- Tiket Pass Terusan -->
       <div class="ticket-card popular">
         <div class="popular-tag">PALING HEMAT</div>
         <h3>Pass Terusan 5 Wahana</h3>
@@ -1079,9 +731,7 @@
     </div>
   </section>
 
-  <!-- ==========================================
-       9. FASILITAS PENGUNJUNG
-       ========================================== -->
+  <!-- ===== FASILITAS ===== -->
   <section class="section-padding" id="fasilitas">
     <div class="section-header">
       <h2>Fasilitas Pengunjung</h2>
@@ -1115,9 +765,7 @@
     </div>
   </section>
 
-  <!-- ==========================================
-       10. FAQ SECTION
-       ========================================== -->
+  <!-- ===== FAQ ===== -->
   <section class="section-padding" id="faq">
     <div class="section-header">
       <h2>Pertanyaan Sering Diajukan (FAQ)</h2>
@@ -1140,9 +788,7 @@
     </div>
   </section>
 
-  <!-- ==========================================
-       11. INDUSTRIAL FOOTER
-       ========================================== -->
+  <!-- ===== FOOTER ===== -->
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
@@ -1169,45 +815,6 @@
       <p>&copy; 2026 Jagat Satwa Nusantara. All Rights Reserved.</p>
     </div>
   </footer>
-
-  <!-- ==========================================
-       12. CONTROLLER SCRIPT
-       ========================================== -->
-  <script>
-    // ==========================================
-    // VIDEO BACKGROUND CONTROLLER
-    // ==========================================
-    const reloadBtn = document.getElementById('reloadVideoBtn');
-    const video = document.getElementById('bgVideo');
-
-    // Reload video when button clicked
-    reloadBtn.addEventListener('click', function() {
-      video.load();
-      video.play().catch(function(e) {
-        console.log('Autoplay prevented, waiting for user interaction');
-      });
-    });
-
-    // Ensure video plays on user interaction (for autoplay policies)
-    document.addEventListener('click', function() {
-      if (video.paused) {
-        video.play().catch(function(e) {});
-      }
-    });
-
-    // Handle video load errors gracefully
-    video.addEventListener('error', function(e) {
-      console.log('Video loading error, using fallback image');
-      // The CSS background image will show automatically
-    });
-
-    // Force video to play when visible
-    window.addEventListener('load', function() {
-      video.play().catch(function(e) {
-        console.log('Autoplay prevented by browser policy');
-      });
-    });
-  </script>
 
 </body>
 </html>
